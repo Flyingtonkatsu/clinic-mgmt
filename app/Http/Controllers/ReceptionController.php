@@ -64,7 +64,6 @@ class ReceptionController extends Controller
         $client = Client::find($client_id);
         $client_name = $client->lastname . ", " . $client->firstname;
 
-
         return response()
             ->json(['view' => view('reception.tableGetPatients')
             ->with('patients', $patients)
@@ -84,13 +83,12 @@ class ReceptionController extends Controller
     public function getClients(Request $request){
         $id = $request->input('id');
         $firstname = $request->input('firstname');
-        $lastname = $request->input('lastname');
+        $lastname = $request->input('lastname');   
+        $clients = Client::where(['firstname' => $firstname, 'lastname' => $lastname])->get();
 
-        // Gets all clients in Clients table where firstname and lastname matches selected
-        //  returns the clients as a json array.
-        
-        $clients = Client::where(['firstname' => $firstname, 'lastname' => $lastname])->get()->toArray();
-
-        return response()->json(['clients' => $clients, 'reg_id' => $id]);
+        return response()->json(['view' => view('reception.tableGetClients')
+                ->with('clients', $clients)
+                ->with('reg_id', $id)
+                ->render()]);
     }
 }

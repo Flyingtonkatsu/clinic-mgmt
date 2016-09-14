@@ -35,7 +35,7 @@ class PagesController extends Controller
 	}
 
 	public function reception(){
-		return view('reception')
+		return view('reception.mainReception')
 			->with('registrations', Registration::all())
 			->with('vets', Employee::all());
 	}

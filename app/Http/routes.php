@@ -14,10 +14,10 @@ Route::get('index', 'PagesController@index');
 Route::get('reception', 'PagesController@reception');
 Route::get('consultation', 'PagesController@consultation');
 
-Route::get('reception.getregistration', 'ReceptionController@getRegistration');
-Route::post('reception.verifyclient', 'ReceptionController@verifyClient');
-Route::post('reception.newclient', 'ReceptionController@newClient');
-Route::post('reception.getclients', 'ReceptionController@getClients');
+Route::get('reception/getregistration', 'ReceptionController@getRegistration');
+Route::post('reception/verifyclient', 'ReceptionController@verifyClient');
+Route::post('reception/newclient', 'ReceptionController@newClient');
+Route::post('reception/getclients', 'ReceptionController@getClients');
 Route::post("reception/update", 'ReceptionController@regUpdate');
 Route::post('reception/getpatients', 'ReceptionController@getPatients');
 

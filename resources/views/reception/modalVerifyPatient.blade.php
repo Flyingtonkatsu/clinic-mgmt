@@ -1,4 +1,3 @@
-
 <!-- Modal for patient verification --> 
 <div id="modal-verify-patient" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">

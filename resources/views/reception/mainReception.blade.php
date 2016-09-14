@@ -62,7 +62,6 @@ Reception
 	</div>
 
 	@include('reception.modalVerifyPatient')
-
 	@include('reception.modalVerifyClient')
 
 </div>
@@ -70,7 +69,9 @@ Reception
 @endsection
 
 @section('scripts')
-	
-	<script src="/js/Reception.js"></script>
+
+	<script src="/js/reception/reception-registration-table.js"></script>
+	<script src="/js/reception/reception-client-controls.js"></script>
+	<script src="/js/reception/reception-patient-controls.js"></script>
 	
 @endsection
