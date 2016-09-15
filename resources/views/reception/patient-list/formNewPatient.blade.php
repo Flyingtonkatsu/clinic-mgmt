@@ -1,22 +1,16 @@
-<form class="form-horizontal" id="form-new-patient">
-	<input type="hidden" id="reg_id">
-	<input type="hidden" id="client_id">
+<!-- Needed data: $client_name, $client_id, $reg_id, $patient_name,
+	$species, $breeds -->
 
-<!-- Should be filled with client name from Registration table -->
+<form class="form-horizontal" id="form-new-patient">
+
 	<div class="form-group">
 		<label class="control-label col-sm-2"><b>Client:</b></label>
-		<label class="control-label col-sm-3" id="label-client-name" style="text-align: left">Doe, John</label>
+		<label class="control-label col-sm-3" style="text-align: left"> {{$client_name}} </label>
 	</div>
-
 
 	<div class="form-group has-feedback">
 		<label class="control-label col-sm-2"><b>Patient:</b></label>
-
-<!-- Should be filled with patient name from Registration table -->
-		<div class="col-sm-4">
-			<input class="form-control col-sm-3" id="input-patient-name" readonly value="Patient Name">
-		</div>
-
+		<label class="control-label col-sm-3" style="text-align: left">{{$patient_name}}</label>
 	</div>
 
 	<div class="form-group has-feedback">
@@ -40,13 +34,15 @@
 		<div class="col-sm-4">
 			<select class="form-control" id="select-species">
 				<option value="" disabled selected>Select species...</option>
-				<option value="Canine">Canine</option>
-				<option value="Feline">Feline</option>
+				@foreach($species as $specie)
+					<option> {{$specie->name}} </option>
+				@endforeach
 			</select>
 		</div>
 		<label class="control-label col-sm-2"> Breed:</label>
 		<div class="col-sm-4">
-			<input class="form-control" placeholder="Enter breed" id="input-breed">
+			<select class="form-control" id="select-breed">
+			</select>
 		</div>
 	</div>
 
@@ -59,7 +55,7 @@
 
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-6">
-			 <button type="button" class="btn btn-primary" id="btn-submit-reg">Submit </button>
+			 <button type="button" class="btn btn-primary btn-submit-new-patient" data-reg-id="{{$reg_id}}" data-client-id="{{$client_id}}">Submit </button>
 		</div>
 	</div>
 </form>

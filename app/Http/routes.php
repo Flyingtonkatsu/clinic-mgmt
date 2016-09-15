@@ -21,6 +21,7 @@ Route::post('reception/newclient', 'ReceptionController@newClient');
 Route::post('reception/getclients', 'ReceptionController@getClients');
 Route::post("reception/update", 'ReceptionController@regUpdate');
 Route::post('reception/getpatients', 'ReceptionController@getPatients');
+Route::post('reception/getnewpatientform', 'ReceptionController@getNewPatientForm');
 
 Route::get('registration.newclient', 'RegistrationController@registrationNewClientForm');
 Route::get('registration/editedreg', 'RegistrationController@getEditedReg');

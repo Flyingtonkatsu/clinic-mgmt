@@ -7,6 +7,7 @@ use App\Models\Registration;
 use App\Models\Client;
 use App\Models\Employee;
 use App\Models\Patient;
+use App\Models\Specie;
 use Illuminate\Support\Facades\DB;
 use DateTime;
 
@@ -44,6 +45,25 @@ class ReceptionController extends Controller
         return response()->json($reg);
     }
 
+    public function getNewPatientForm(Request $request){
+        $client_id = $request->input('client_id');
+        $patient_name = $request->input('patient_name');
+        $reg_id = $request->input('reg_id');
+        $species = Specie::all();
+        $client = Client::find($client_id);
+        $client_name = $client->lastname . ', ' . $client->firstname;
+
+        return response()->json([
+            'view' => view('reception.patient-list.newpatient.formNewPatient')
+            ->with('client_id', $client_id)
+            ->with('reg_id', $reg_id)
+            ->with('patient_name', $patient_name)
+            ->with('client_name', $client_name)
+            ->with('species', $species)
+            ->render()
+            ]);
+    }
+
     public function verifyPatient(Request $request){
         /*
         $id = $request->input('reg_id');
@@ -65,12 +85,15 @@ class ReceptionController extends Controller
         $client_name = $client->lastname . ", " . $client->firstname;
 
         return response()
-            ->json(['view' => view('reception.patient-list.tableGetPatients')
+            ->json(['view' => view('reception.patient-list.verifypatient.tableGetPatients')
             ->with('patients', $patients)
             ->with('reg_id', $reg_id)
             ->with('count', $patients->count())
+            ->with('client_id', $client_id)
+            ->with('patient_name', $patient_name)
             ->render(),
-            'client_name' => $client_name]);
+            'client_name' => $client_name
+            ]);
     }
 
     public function newClient(Request $request)
@@ -86,7 +109,7 @@ class ReceptionController extends Controller
         $lastname = $request->input('lastname');   
         $clients = Client::where(['firstname' => $firstname, 'lastname' => $lastname])->get();
 
-        return response()->json(['view' => view('reception.patient-list.tableGetClients')
+        return response()->json(['view' => view('reception.patient-list.verifyclient.tableGetClients')
                 ->with('clients', $clients)
                 ->with('reg_id', $id)
                 ->render()]);

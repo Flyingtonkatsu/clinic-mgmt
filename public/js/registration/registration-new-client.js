@@ -29,8 +29,6 @@ function getEditedClient(){
 				$("#input-firstname").val(data.client_fname);
 				$("#input-lastname").val(data.client_lname);
 
-				$("#form-group-names").attr("class", "form-group has-success");
-
 				$("#input-email").focus();
 			}
 		}

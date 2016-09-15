@@ -28,8 +28,8 @@
 
 					<form class="form-horizontal" id="form-new-client">
 			        	<input type="hidden" id="reg_id" name="reg_id">
-			        	<div class="form-group has-feedback" id="form-group-names">
-			        		<label class="control-label col-sm-2" for="first-name">First Name:</label>
+			        	<div class="form-group" id="form-group-names">
+			        		<label class="control-label col-sm-2">First Name:</label>
 			        		<div class="col-sm-4">
 			        			<input class="form-control input-name" placeholder="Enter first name" id="input-firstname">
 			        		</div>
