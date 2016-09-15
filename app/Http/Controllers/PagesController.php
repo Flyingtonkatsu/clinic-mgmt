@@ -21,6 +21,10 @@ class PagesController extends Controller
 		return view('index');
 	}
 
+	public function registration(){
+        return view('registration.queue.mainRegistration');
+    }
+
 	public function index(){
 		$redirect = Auth::user()->access_id;
 
@@ -35,7 +39,7 @@ class PagesController extends Controller
 	}
 
 	public function reception(){
-		return view('reception.mainReception')
+		return view('reception.patient-list.mainReception')
 			->with('registrations', Registration::all())
 			->with('vets', Employee::all());
 	}

@@ -25,7 +25,7 @@ class RegistrationController extends Controller
             'city' => $request->input('city')
             ]);
 
-        return redirect()->action('RegistrationController@registration');
+        return redirect()->action('PagesController@registration');
     }
 
     public function getEditedReg(Request $request) {
@@ -67,19 +67,8 @@ class RegistrationController extends Controller
         return response()->json(['state' => 'success', 'message' => 'Successfully registered!', 'firstname' => $firstname, 'lastname'=> $lastname, 'patients' => $patients]);
     }
 
-    
-    public function registrationSuccess(){
-        return view('registration')
-            ->with('message', 'Successfully registered!');
-    }
-
-    public function registration(){
-        return view('registration')
-            ->with('message', '');
-    }
-
     public function registrationNewClientForm(){
-        return view('registration.newclient')
+        return view('registration.newclient.mainNewClient')
             ->with('cities', City::all());
     }
 }

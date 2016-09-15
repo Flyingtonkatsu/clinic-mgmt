@@ -30,7 +30,7 @@ class ReceptionController extends Controller
     public function getRegistration(Request $request){
         $registration = Registration::where( DB::raw('DAY(created_at)'), '=', date('d'))->get();
 
-        return view('reception.tableRegistration')
+        return view('reception.patient-list.tableRegistration')
             ->with('registrations', $registration)
             ->with('vets', Employee::all());
     }
@@ -65,7 +65,7 @@ class ReceptionController extends Controller
         $client_name = $client->lastname . ", " . $client->firstname;
 
         return response()
-            ->json(['view' => view('reception.tableGetPatients')
+            ->json(['view' => view('reception.patient-list.tableGetPatients')
             ->with('patients', $patients)
             ->with('reg_id', $reg_id)
             ->with('count', $patients->count())
@@ -86,7 +86,7 @@ class ReceptionController extends Controller
         $lastname = $request->input('lastname');   
         $clients = Client::where(['firstname' => $firstname, 'lastname' => $lastname])->get();
 
-        return response()->json(['view' => view('reception.tableGetClients')
+        return response()->json(['view' => view('reception.patient-list.tableGetClients')
                 ->with('clients', $clients)
                 ->with('reg_id', $id)
                 ->render()]);

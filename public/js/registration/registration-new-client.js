@@ -33,9 +33,6 @@ function getEditedClient(){
 
 				$("#input-email").focus();
 			}
-			else {
-				alertMessage('danger',"No client is marked for creation!");
-			}
 		}
 	})
 }

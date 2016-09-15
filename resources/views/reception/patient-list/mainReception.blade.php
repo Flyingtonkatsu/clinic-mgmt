@@ -61,8 +61,8 @@ Reception
 		</div>
 	</div>
 
-	@include('reception.modalVerifyPatient')
-	@include('reception.modalVerifyClient')
+	@include('reception.patient-list.modalVerifyPatient')
+	@include('reception.patient-list.modalVerifyClient')
 
 </div>
 

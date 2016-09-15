@@ -93,5 +93,5 @@
 @endsection
 
 @section('scripts')
-	<script src="/js/Registration-new-client.js"></script
+	<script src="/js/registration/registration-new-client.js"></script
 @endsection

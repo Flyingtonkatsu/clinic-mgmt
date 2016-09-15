@@ -68,6 +68,6 @@
 @section('scripts')
 	
 	
-	<script src="/js/Registration.js"></script>
+	<script src="/js/registration/registration-queue.js"></script>
 
 @endsection
