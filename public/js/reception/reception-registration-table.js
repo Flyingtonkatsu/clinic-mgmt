@@ -11,7 +11,7 @@ function updatePurpose(event){
 }
 
 function updateVet(event){
-	updateField('vet', $(this));
+	updateField('vet_id', $(this));
 }
 
 function updateRoom(event){

@@ -38,6 +38,7 @@
                     </a>
                 </li>
 
+
                 <li class="sidebar-nav-head">
                     @yield('taskbar-head')
                 </li>
@@ -51,6 +52,7 @@
                 @endif
 
                 <li class="pull-down"> 
+                    <a href=""><i class="fa fa-dashboard"></i> Dashboard </a>
                     <a href="logout"><i class="fa fa-sign-out"></i> Logout {{Auth::user()->username}}</a>
                 </li>
                

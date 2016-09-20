@@ -8,6 +8,7 @@ use App\Models\Client;
 use App\Models\Employee;
 use App\Models\Patient;
 use App\Models\Specie;
+use App\Models\Breed;
 use Illuminate\Support\Facades\DB;
 use DateTime;
 
@@ -53,15 +54,12 @@ class ReceptionController extends Controller
         $client = Client::find($client_id);
         $client_name = $client->lastname . ', ' . $client->firstname;
 
-        return response()->json([
-            'view' => view('reception.patient-list.newpatient.formNewPatient')
+        return view('reception.patient-list.newpatient.formNewPatient')
             ->with('client_id', $client_id)
             ->with('reg_id', $reg_id)
             ->with('patient_name', $patient_name)
             ->with('client_name', $client_name)
-            ->with('species', $species)
-            ->render()
-            ]);
+            ->with('species', $species);
     }
 
     public function verifyPatient(Request $request){
@@ -96,8 +94,13 @@ class ReceptionController extends Controller
             ]);
     }
 
-    public function newClient(Request $request)
-    {
+    public function getBreeds(Request $request){
+        $species = $request->input('species');
+        $breeds = Breed::where('species', $species)->get(['name']);
+        return response()->json(['breeds' => $breeds]);
+    }
+
+    public function newClient(Request $request){
         $id = $request->input('reg_id');
         $reg = Registration::where('id', $id)->first();
         $reg->update(['edited' => '1']);
