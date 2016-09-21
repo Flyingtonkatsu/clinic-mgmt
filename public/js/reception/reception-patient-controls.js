@@ -8,14 +8,13 @@ function getPatientsOwnedByClient(event){
 				'patient_name' : patient_name,
 				'reg_id' : reg_id
 				};
+	$('.btn-verify-patient').attr('disabled', true);
+	loadButton(element);
 
 	$.ajax({
 		type: "POST",
 		url: "/reception/getpatients",
 		data: data,
-		beforeSend: function(){
-			loadButton(element);
-		},
 		success: function(data){
 			$('#modal-verify-patient-client-name').html(
 				'<b>Client: </b>' + data.client_name
@@ -23,11 +22,27 @@ function getPatientsOwnedByClient(event){
 			$('#table-verify-patient').html(data.view);
 			$('#modal-verify-patient').modal("show");
 			$('.btn-new-patient').on('click touch', showNewPatientForm);
-		},
-		complete: function(){
+			$('.btn-verify-selected-patient').on('click touch', verifyExistingPatient);
 			unloadButton(element, "<i class='fa fa-question'></i>");
+			$('.btn-verify-patient').attr('disabled', false);
 		}
 	});
+}
+
+function verifyExistingPatient(event){
+	var element = $(this);
+	var reg_id = element.attr('data-reg-id');
+	var patient_id = element.attr('data-patient-id');
+	var data = {'reg_id' : reg_id, 'patient_id' : patient_id};
+
+	loadButton(element);
+	$.post(
+		'reception/verifyexistingpatient',
+		data,
+		function(data){
+			$('#modal-verify-patient').modal("hide");
+			refreshRegistrationTable();
+		});
 }
 
 function showNewPatientForm(event){

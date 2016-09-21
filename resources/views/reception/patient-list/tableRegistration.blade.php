@@ -10,8 +10,6 @@
 
 			<td class="text-nowrap"> {{$reg->patient_name}} </td>
 
-		<!-- All other controls will only be enabled after patient is verified -->
-		<!-- 	Controls: Purpose, Weight, Attending Vet, Assigning Room -->
 			@if($reg->patient_verified)
 				<td class="text-nowrap">
 					<span class="glyphicon glyphicon-ok" style="color: green"></span>

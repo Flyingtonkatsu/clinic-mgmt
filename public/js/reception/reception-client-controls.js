@@ -53,27 +53,19 @@ function searchClients(event){
 	var lastname = element.attr('data-client-lname');
 	var firstname = element.attr('data-client-fname');
 	var clientinfo = {'id' : id, 'lastname' : lastname, 'firstname' : firstname};
+	$('.btn-verify-client').attr('disabled', true);
+	loadButton(element);
 
-	$.ajax({
-		type: "POST",
-		url: "/reception/getclients",
-		data: clientinfo,
-		dataType: "json",
-
-		beforeSend: function(){
-			loadButton(element);
-		},
-
-		success: function(data) {
+	$.post(
+		"/reception/getclients",
+		clientinfo,
+		function(data) {
 			$('#table-verify-client').html(data.view);
 			$('.btn-verify-selected-client').on("touch click", verifyClientWithID(id));
-		},
-
-		complete: function(){
 			$('#modal-verify-client').modal("show");
 			$('.btn-verify-client').attr('disabled', false);
 			$('.btn-new-client').on("click touch", newClient);
 			unloadButton(element, "<i class='fa fa-question'></i>");
 		}
-	});
+	);
 }

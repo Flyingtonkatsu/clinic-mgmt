@@ -63,12 +63,10 @@ class ReceptionController extends Controller
     }
 
     public function verifyPatient(Request $request){
-        /*
         $id = $request->input('reg_id');
         $patient_id = $request->input('patient_id');
         $reg = Registration::where('id', $id)->first();
-        $reg->update(['patient_id' => '1', 'client' => $patient_id]);
-        */
+        $reg->update(['patient_id' => $patient_id, 'patient_verified' => 1]);
     }
 
     public function newPatient(Request $request){
