@@ -22,7 +22,7 @@ function getPatientsOwnedByClient(event){
 				);
 			$('#table-verify-patient').html(data.view);
 			$('#modal-verify-patient').modal("show");
-			$('.btn-new-patient').on('click touch', newPatient);
+			$('.btn-new-patient').on('click touch', showNewPatientForm);
 		},
 		complete: function(){
 			unloadButton(element, "<i class='fa fa-question'></i>");
@@ -30,7 +30,7 @@ function getPatientsOwnedByClient(event){
 	});
 }
 
-function newPatient(event){
+function showNewPatientForm(event){
 	var element = $(this);
 	var client_id = element.attr('data-client-id');
 	var patient_name = element.attr('data-patient-name');
@@ -51,11 +51,46 @@ function newPatient(event){
 			$('#modal-verify-patient').modal("hide");
 			$('#modal-new-patient').modal("show");
 			$('#select-species').on("change", getBreeds);
+			$('#btn-submit-new-patient').on("click touch", submitNewPatient);
 		},
 		complete: function(){
 			unloadButton(element, '<i class="fa fa-plus"></i> New Patient');
 		}
 	});	
+}
+
+function submitNewPatient(event){
+	var client_id = $('#client-id').val();
+	var reg_id = $('#reg-id').val();
+	var patient_name = $('#patient-name').val();
+	var birthdate = $('#input-birthdate').val();
+	var gender = $('#select-gender').val();
+	var color = $('#input-color').val();
+	var species = $('#select-species').val();
+	var breed = $('#select-breed').val();
+	var data = {
+				'client_id' : client_id,
+				'reg_id' : reg_id,
+				'patient_name' : patient_name,
+				'birthdate' : birthdate,
+				'gender' : gender,
+				'color' : color,
+				'species' : species,
+				'breed' : breed
+	};
+	unloadButton($(this));
+
+	$.ajax({
+		type: "POST",
+		url: "reception/addnewclient",
+		data: data,
+		success: function(data){
+			if(data.response == "ok"){
+				$('#modal-new-patient').modal("hide");
+				refreshRegistrationTable();
+			}
+		}
+	});
 }
 
 function getBreeds(event){

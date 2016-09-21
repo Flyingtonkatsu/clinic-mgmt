@@ -10,15 +10,12 @@
 
 			<td class="text-nowrap"> {{$reg->patient_name}} </td>
 
-		<!-- button for patient verification -->
-			<td class="text-nowrap"> 
-				<button type="button" class="btn btn-danger btn-verify-patient" data-dismiss="modal" data-client-id="{{$reg->client_id}}" data-reg-id="{{$reg->id}}"  data-patient-name="{{$reg->patient_name}}"> <i class="fa fa-question"></i> </button>
-			</td>
-
-
 		<!-- All other controls will only be enabled after patient is verified -->
 		<!-- 	Controls: Purpose, Weight, Attending Vet, Assigning Room -->
 			@if($reg->patient_verified)
+				<td class="text-nowrap">
+					<span class="glyphicon glyphicon-ok" style="color: green"></span>
+				</td>
 				<td class="text-nowrap">
 		    		@if($reg->purpose == '')
 		    			<select class="form-control select-purpose" data-reg-id="{{$reg->id}}" style="width:150px">
@@ -78,6 +75,9 @@
 					@endif
 		    	</td>
 		    @else
+		    	<td class="text-nowrap"> 
+					<button type="button" class="btn btn-danger btn-verify-patient" data-dismiss="modal" data-client-id="{{$reg->client_id}}" data-reg-id="{{$reg->id}}"  data-patient-name="{{$reg->patient_name}}"> <i class="fa fa-question"></i> </button>
+				</td>
 		    	<td class="text-nowrap" colspan="4">
 		    		Please verify patient.
 		    	</td>

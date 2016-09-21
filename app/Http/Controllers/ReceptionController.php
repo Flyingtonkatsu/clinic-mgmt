@@ -71,6 +71,33 @@ class ReceptionController extends Controller
         */
     }
 
+    public function newPatient(Request $request){
+        $client_id = $request->input('client_id');
+        $reg_id = $request->input('reg_id');
+        $name = $request->input('patient_name');
+        $birthdate = $request->input('birthdate');
+        $color = $request->input('color');
+        $breed = $request->input('breed');
+        $species = $request->input('species');
+        $gender = $request->input('gender');
+
+        $patient = Patient::create([
+            'name' => $name,
+            'birthdate' => $birthdate,
+            'color' => $color,
+            'breed' => $breed,
+            'species' => $species,
+            'gender' => $gender,
+            'client_id' => $client_id
+        ]);
+
+        $patient_id = $patient->id;
+        $reg_entry = Registration::find($reg_id);
+        $reg_entry->update(['patient_verified' => 1, 'patient_id' => $patient_id]);
+
+        return response()->json(['patient' => $patient->toArray(), 'response' => 'ok']);
+    }
+
     public function getPatients(Request $request){
         $client_id = $request->input('client_id');
         $reg_id = $request->input('reg_id');
