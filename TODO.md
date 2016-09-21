@@ -1,3 +1,0 @@
-# TODO
-- [ ] Reception
-- [x] Consultation
