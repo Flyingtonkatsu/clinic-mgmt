@@ -12,7 +12,7 @@ class User extends Model implements AuthenticatableContract
     use Authenticatable;
 
     protected $fillable = [
-        'username', 'password', 'access_id'
+        'username', 'password', 'access_id', 'employee_id'
     ];
 
     protected $hidden = ['password', 'remember_token'];

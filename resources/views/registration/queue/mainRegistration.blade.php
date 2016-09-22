@@ -9,7 +9,7 @@
 	   <span class="glyphicon glyphicon-list"></span> Queue Registration
 	</li>
 	<li> 
-	    <a href="registration.newclient"><span class="glyphicon glyphicon-user"></span> New Client</a>
+	    <a href="registration#newclient"><span class="glyphicon glyphicon-user"></span> New Client</a>
 	</li>
 @endsection
 

@@ -2,25 +2,17 @@ function newClient(event){
 	var reg_id = $(this).attr('data-reg-id');
 	var data = {'reg_id' : reg_id};
 
-	$.ajax({
-		type: "POST",
-		url: "/reception/newclient",
-		data: data,
+	loadButton($('.btn-new-client'), 'New Client');
 
-		beforeSend: function(){
-			loadButton($('.btn-new-client'), 'New Client');
-		},
-
-		success: function(){
+	$.post(
+		"/reception/newclient",
+		data,
+		function(){
 			$('#modal-verify-client').modal("hide");
 			alertMessage('success', "Client is ready to be created!");
-		},
-
-		complete: function() {
 			unloadButton($('.btn-new-client'), "<i class='fa fa-plus'></i> New Client");
 		}
-
-	});
+	);
 }
 
 
@@ -32,17 +24,16 @@ var verifyClientWithID = function(id){
 
 		loadButton($('.btn-verify-selected-client'), ' Verify' );
 		
-		$.ajax({
-			type: "POST",
-			url: "/reception/verifyclient",
-			data: data,
+		$.post(
+			"/reception/verifyclient",
+			data,
 
-			success: function(){
+			function(){
 				alertMessage('success', "Successfully verified client!");
 				$('#modal-verify-client').modal("hide");
 				refreshRegistrationTable();
-			},
-		});
+			}
+		);
 	};
 
 };

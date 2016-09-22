@@ -36,51 +36,40 @@ function updateField(field, object){
 	var data = { 'id' : id, 'field' : field, 'value' : value};
 	var cell = object.parent();
 
-	$.ajax({
-		type: "POST",
-		url: "reception/update",
-		data: data,
+	$('input').attr('disabled', true);
+	$('.select-vet').attr('disabled', true);
+	$('.select-purpose').attr('disabled', true);
+	cell.html('<i class="fa fa-spinner fa-pulse"></i>');
 
-		beforeSend: function() {
-			$('input').attr('disabled', true);
-			$('.select-vet').attr('disabled', true);
-			$('.select-purpose').attr('disabled', true);
-			cell.html('<i class="fa fa-spinner fa-pulse"></i>');
-		},
-
-		success: function(response) {
+	$.post(
+		"reception/update",
+		data,
+		function(response) {
 			refreshRegistrationTable();
 			if(response.status == 'ok'){
 				alertMessage('success', response.message);
 			}
 			else
 				alertMessage('danger', response.message);
-		},
-
-		complete: function() {
 			object.attr('disabled', false);
 		}
-	});
+	);
 }
 
 function refreshRegistrationTable(){
 	clearInterval();
 	var registrationTable = $('#table-registration');
 
-	$.ajax({
-		type: "GET",
-		url: "/reception/getregistration",
+	registrationTable.html(
+		"<tr><td class='text-center' colspan='10'>" +
+		"<i class='fa fa-spinner fa-pulse fa-3x'></i>" +
+		"</td></tr>"
+	);
+	loadButton($('.btn-refresh'), "Refresh");
 
-		beforeSend: function(){
-			registrationTable.html(
-				"<tr><td class='text-center' colspan='10'>" +
-				"<i class='fa fa-spinner fa-pulse fa-3x'></i>" +
-				"</td></tr>"
-				);
-			loadButton($('.btn-refresh'), "Refresh");
-		},
-
-		success: function(data){
+	$.get(
+		"/reception/getregistration",
+		function(data){
 			registrationTable.html(data);
 			$('.btn-verify-client').attr("disabled", false);
 			$('.btn-verify-client').on("click touch", searchClients);
@@ -89,12 +78,9 @@ function refreshRegistrationTable(){
 			$('.select-vet').on("change", updateVet);
 			$('.select-room').on("change", updateRoom);
 			$('.input-weight').focusout(updateWeight);
-		},
-
-		complete: function(){
 			unloadButton($('.btn-refresh'), "<i class='fa fa-refresh'></i> Refresh");
 		}
-	});
+	);
 }
 
 

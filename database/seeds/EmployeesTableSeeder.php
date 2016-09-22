@@ -5,16 +5,23 @@ use App\Models\Employee;
 
 class EmployeesTableSeeder extends Seeder
 {
-    public function run()
-    {
+    public function run(){
+        
+        Employee::create([
+            'number' => '0000',
+            'firstname' => 'Admin',
+            'lastname' => 'Admin',
+            'position' => 'Admin',
+        ]);
 
         Employee::create([
-            'number' => '1000',
-            'firstname' => 'Louis',
-            'lastname' => 'Sanchez',
-            'position' => 'Vet',
-            'initials' => 'LS'
+            'number' => '2012',
+            'firstname' => 'Jona',
+            'lastname' => 'Reyes',
+            'position' => 'Receptionist',
+            'initials' => 'JR'
         ]);
+
 
         Employee::create([
             'number' => '1001',
@@ -26,19 +33,10 @@ class EmployeesTableSeeder extends Seeder
 
         Employee::create([
             'number' => '2002',
-            'firstname' => 'Joey',
-            'lastname' => 'Leoncio',
+            'firstname' => 'Michael',
+            'lastname' => 'de Guia',
             'position' => 'Vet',
-            'initials' => 'JL'
+            'initials' => 'MdG'
         ]);
-
-        Employee::create([
-            'number' => '2003',
-            'firstname' => 'Monica',
-            'lastname' => 'Cruz',
-            'position' => 'Vet',
-            'initials' => 'MC'
-        ]);
-
     }
 }

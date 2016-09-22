@@ -23,6 +23,10 @@
 <li class="nav-item" >
   <a class="nav-link" href="#about"> <span class="fa fa-archive"></span> Inventory</a>
 </li>
+
+<li class="nav-item">
+	<a class="nav-link" href="admin"><i class="fa fa-users"></i> Admin
+</li>
 @endsection
 
 @section('content')

@@ -2,8 +2,6 @@
 $(document).ready(function(){
 	$("#btn-cancel-reg").on("click touch", cancelReg);
 	$("#btn-submit-reg").on("click touch", submitReg);
-
-
 	$("#input-firstname").attr('readonly', true);
 	$("#input-lastname").attr('readonly', true);
 	$(".btn").attr("disabled", true);
@@ -15,11 +13,9 @@ $(document).ready(function(){
 });
 
 function getEditedClient(){
-	$.ajax({
-		type: "GET",
-		url: "registration/editedreg",
-
-		success: function(data) {
+	$.get(
+		"registration/editedreg",
+		function(data) {
 			if(Object.keys(data).length > 0){
 				$(".btn").attr("disabled", false);
 				$("input").attr("disabled", false);
@@ -28,11 +24,10 @@ function getEditedClient(){
 
 				$("#input-firstname").val(data.client_fname);
 				$("#input-lastname").val(data.client_lname);
-
 				$("#input-email").focus();
 			}
 		}
-	})
+	);
 }
 
 function submitReg(){
@@ -55,25 +50,18 @@ function submitReg(){
 				'city' : city
 				};
 
-	$.ajax({
-		type: "POST",
-		url: "registration/newclient",
-		data: data,
+	$('#btn-submit-reg').attr('disabled', true);
+	$('#btn-cancel-reg').attr('disabled', true);
+	$(".btn").attr("disabled", true);
+	$("input").attr("disabled", true);
+	$("textarea").attr("disabled", true);
+	$("select").attr("disabled", true);
+	$('#btn-submit-reg').html('<i class="fa fa-spinner fa-pulse"></i> Submit ');
 
-		beforeSend: function () {
-			
-			// verification here:
-
-			$('#btn-submit-reg').attr('disabled', true);
-			$('#btn-cancel-reg').attr('disabled', true);
-			$(".btn").attr("disabled", true);
-			$("input").attr("disabled", true);
-			$("textarea").attr("disabled", true);
-			$("select").attr("disabled", true);
-			$('#btn-submit-reg').html('<i class="fa fa-spinner fa-pulse"></i> Submit ');
-		},
-
-		success: function () {
+	$.post(
+		"registration/newclient",
+		data,
+		function() {
 			cancelReg();
 			$("#input-firstname").attr("value", "");
 			$("#input-lastname").attr("value", "");
@@ -85,13 +73,10 @@ function submitReg(){
 			alertMessage('success', 'New client successfully registered! Client can now be verified.');
 			setTimeout(function(){
 				location.assign('registration');
-			}, 4000);
+			}, 2500);
 
-		},
-
-		complete: function () {
 		}
-	});
+	);
 }
 
 function cancelReg(){

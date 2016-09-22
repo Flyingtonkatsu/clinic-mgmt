@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Registration;
 use App\Models\Client;
 use App\Models\City;
 
 class RegistrationController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
     
     public function registerNewClient(Request $request) {
         $reg = Registration::where('edited', 1)->first();

@@ -11,11 +11,10 @@ function getPatientsOwnedByClient(event){
 	$('.btn-verify-patient').attr('disabled', true);
 	loadButton(element);
 
-	$.ajax({
-		type: "POST",
-		url: "/reception/getpatients",
-		data: data,
-		success: function(data){
+	$.post(
+		"/reception/getpatients",
+		data,
+		function(data){
 			$('#modal-verify-patient-client-name').html(
 				'<b>Client: </b>' + data.client_name
 				);
@@ -26,7 +25,7 @@ function getPatientsOwnedByClient(event){
 			unloadButton(element, "<i class='fa fa-question'></i>");
 			$('.btn-verify-patient').attr('disabled', false);
 		}
-	});
+	);
 }
 
 function verifyExistingPatient(event){
@@ -42,7 +41,8 @@ function verifyExistingPatient(event){
 		function(data){
 			$('#modal-verify-patient').modal("hide");
 			refreshRegistrationTable();
-		});
+		}
+	);
 }
 
 function showNewPatientForm(event){
@@ -57,21 +57,18 @@ function showNewPatientForm(event){
 
 	loadButton(element);
 
-	$.ajax({
-		type: "POST",
-		url: "/reception/getnewpatientform",
-		data: data,
-		success: function(data){
+	$.post(
+		"/reception/getnewpatientform",
+		data,
+		function(data){
 			$('#modal-body-new-patient').html(data);
 			$('#modal-verify-patient').modal("hide");
 			$('#modal-new-patient').modal("show");
 			$('#select-species').on("change", getBreeds);
 			$('#btn-submit-new-patient').on("click touch", submitNewPatient);
-		},
-		complete: function(){
 			unloadButton(element, '<i class="fa fa-plus"></i> New Patient');
 		}
-	});	
+	);	
 }
 
 function submitNewPatient(event){
@@ -95,17 +92,16 @@ function submitNewPatient(event){
 	};
 	unloadButton($(this));
 
-	$.ajax({
-		type: "POST",
-		url: "reception/addnewclient",
-		data: data,
-		success: function(data){
+	$.post(
+		"reception/addnewclient",
+		data,
+		function(data){
 			if(data.response == "ok"){
 				$('#modal-new-patient').modal("hide");
 				refreshRegistrationTable();
 			}
 		}
-	});
+	);
 }
 
 function getBreeds(event){
@@ -116,11 +112,10 @@ function getBreeds(event){
 	$('#select-breed').attr('disabled', true);
 	$('#spinner-select-breed').html('<i class="fa fa-spinner fa-pulse"></i> Breed:');
 
-	$.ajax({
-		type: "POST",
-		url: "reception/getbreeds",
-		data: data,
-		success: function(data){
+	$.post(
+		"reception/getbreeds",
+		data,
+		function(data){
 			dropdown.html("<option disabled selected>Select breed</option>");
 
 			for(var i=0; i<data.breeds.length; i++){
@@ -129,5 +124,5 @@ function getBreeds(event){
 			$('#spinner-select-breed').html('Breed:');
 			$('#select-breed').attr('disabled', false);
 		}
-	});
+	);
 }

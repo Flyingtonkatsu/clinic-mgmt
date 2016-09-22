@@ -50,40 +50,38 @@ function submitReg(){
 		}
 	}
 
-	$.ajax({
-		type: "POST",
-		url: "registration/registerinqueue",
-		data: data,
+	// Validation:
+	$("#div-input-firstname").attr("class", "col-sm-4");
+	$("#div-input-lastname").attr("class", "col-sm-4");
+	$("#div-patients-list").attr("class", "col-sm-4");
 
-		beforeSend: function(request){
-			$("#div-input-firstname").attr("class", "col-sm-4");
-			$("#div-input-lastname").attr("class", "col-sm-4");
-			$("#div-patients-list").attr("class", "col-sm-4");
+	//validation goes here:
+	if( $("#input-firstname").val() === ''){
+		hasError = true;
+		request.abort();
+		$("#div-input-firstname").attr("class", "col-sm-4 has-error has-feedback");
+	}
 
-			//validation goes here:
-			if( $("#input-firstname").val() === ''){
-				hasError = true;
-				request.abort();
-				$("#div-input-firstname").attr("class", "col-sm-4 has-error has-feedback");
-			}
+	if( $("#input-lastname").val() === ''){
+		hasError = true;
+		request.abort();
+		$("#div-input-lastname").attr("class", "col-sm-4 form-group has-error");
+	}
 
-			if( $("#input-lastname").val() === ''){
-				hasError = true;
-				request.abort();
-				$("#div-input-lastname").attr("class", "col-sm-4 form-group has-error");
-			}
+	if(hasError){
+		alertMessage('danger', "Please fill out the missing fields!");
+		return;
+	}
 
-			if(hasError){
-				alertMessage('danger', "Please fill out the missing fields!");
-				return;
-			}
+	$(".btn").attr("disabled", true);
+	$("input").attr("disabled", true);
+	$("#btn-submit-reg").html("<i class='fa fa-spinner fa-pulse'></i> Submit");
+	// end validation
 
-			$(".btn").attr("disabled", true);
-			$("input").attr("disabled", true);
-			$("#btn-submit-reg").html("<i class='fa fa-spinner fa-pulse'></i> Submit");
-		},
-
-		success: function(response){
+	$.post(
+		"registration/registerinqueue",
+		data,
+		function(response){
 			if(response.state == "success"){
 				alertMessage('success', response.message);
 				cancelReg();
@@ -92,12 +90,9 @@ function submitReg(){
 				alertMessage('danger', response.message);
 				$("#div-patients-list").attr("class", "col-sm-4 has-error");
 			}
-		},
-
-		complete: function(){
 			$(".btn").attr("disabled", false);
 			$("input").attr("disabled", false);
 			$("#btn-submit-reg").html("Ok");
-		}
-	});
+		},
+	);
 }

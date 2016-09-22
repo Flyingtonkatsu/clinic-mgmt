@@ -9,21 +9,31 @@ class LoginsTableSeeder extends Seeder
     {
 
         User::create([
-            'username' => 'reception',
+            'username' => 'root',
             'password' => bcrypt('password'),
-            'access_id' => 1
+            'access_id' => 0,
+            'employee_id' => 1
         ]);
 
         User::create([
             'username' => 'registration',
             'password' => bcrypt('password'),
-            'access_id' => 2
+            'access_id' => 1,
+            'employee_id' => 2
         ]);
 
         User::create([
-            'username' => 'root',
+            'username' => 'reception',
             'password' => bcrypt('password'),
-            'access_id' => 0
+            'access_id' => 2,
+            'employee_id' => 3
+        ]);
+
+        User::create([
+            'username' => 'consultation',
+            'password' => bcrypt('password'),
+            'access_id' => 3,
+            'employee_id' => 4
         ]);
     }
 }

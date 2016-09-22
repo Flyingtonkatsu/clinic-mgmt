@@ -9,11 +9,14 @@ Route::get('logout', function(){
 });
 Route::auth();
 
-Route::get('admin', 'PagesController@admin');
 Route::get('index', 'PagesController@index');
 Route::get('reception', 'PagesController@reception');
 Route::get('consultation', 'PagesController@consultation');
 Route::get('registration', 'PagesController@registration');
+Route::get('admin', 'PagesController@admin');
+
+Route::get('admin/employee#registration', 'AdminController@getFormEmployeeRegistration');
+Route::get('admin/employee#view', 'AdminController@getEmployeeList');
 
 Route::get('reception/getregistration', 'ReceptionController@getRegistration');
 Route::post('reception/verifyclient', 'ReceptionController@verifyClient');

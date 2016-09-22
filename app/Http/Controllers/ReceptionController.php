@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Registration;
 use App\Models\Client;
 use App\Models\Employee;
@@ -14,6 +15,9 @@ use DateTime;
 
 class ReceptionController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
 
     public function regUpdate(Request $request){
         $field = $request->input('field');
@@ -31,10 +35,11 @@ class ReceptionController extends Controller
 
     public function getRegistration(Request $request){
         $registration = Registration::where( DB::raw('DAY(created_at)'), '=', date('d'))->get();
+        $vets = Employee::where('position', 'Vet')->get();
 
         return view('reception.patient-list.tableRegistration')
             ->with('registrations', $registration)
-            ->with('vets', Employee::all());
+            ->with('vets', $vets);
     }
 
     public function verifyClient(Request $request){

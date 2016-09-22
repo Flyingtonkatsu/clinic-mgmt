@@ -45,14 +45,10 @@
 
                 @yield('taskbar')
 
-                @if(Auth::user()->access_id == 0)
-                <li>
-                <a href="admin"><i class="fa fa-th"></i> Back to Modules
-                </li>
-                @endif
-
                 <li class="pull-down"> 
-                    <a href=""><i class="fa fa-dashboard"></i> Dashboard </a>
+                    @if(Auth::user()->access_id == 0)
+                    <a href="index"><i class="fa fa-th"></i> Back to Modules
+                    @endif
                     <a href="logout"><i class="fa fa-sign-out"></i> Logout {{Auth::user()->username}}</a>
                 </li>
                
@@ -64,7 +60,7 @@
         
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="project-overlay" id="alert-message" hidden="true">    
+                <div id="alert-message" hidden="true">    
                 </div>
 
                 @yield('content')
