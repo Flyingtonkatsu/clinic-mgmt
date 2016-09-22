@@ -29,7 +29,8 @@ Route::post("reception/getbreeds", 'ReceptionController@getBreeds');
 Route::post("reception/addnewclient", 'ReceptionController@newPatient');
 Route::post('reception/verifyexistingpatient', 'ReceptionController@verifyPatient');
 
-Route::get('registration.newclient', 'RegistrationController@registrationNewClientForm');
+Route::get('registration/viewNewClient', 'RegistrationController@viewNewClient');
+Route::get('registration/viewQueue', 'RegistrationController@viewQueue');
 Route::get('registration/editedreg', 'RegistrationController@getEditedReg');
 
 Route::post('registration/newclient', 'RegistrationController@registerNewClient');

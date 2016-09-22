@@ -36,7 +36,7 @@ class PagesController extends Controller
 		$access = Auth::user()->access_id;
 
 		if($access == 1 || $access == 0)
-        	return view('registration.queue.mainRegistration');
+        	return view('registration.mainRegistration');
         
 		return redirect('index');
     }
@@ -55,9 +55,9 @@ class PagesController extends Controller
 
 	public function consultation(){
 		$access = Auth::user()->access_id;
-		
+
 		if($access == 3 || $access == 0)
-			return view('consultation.consultation');
+			return view('consultation.mainConsultation');
 
 		return redirect('index');
 	}

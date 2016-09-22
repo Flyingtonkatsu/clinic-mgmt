@@ -93,6 +93,6 @@ function submitReg(){
 			$(".btn").attr("disabled", false);
 			$("input").attr("disabled", false);
 			$("#btn-submit-reg").html("Ok");
-		},
+		}
 	);
 }
