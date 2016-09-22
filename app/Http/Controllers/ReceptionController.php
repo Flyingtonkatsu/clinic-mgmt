@@ -33,7 +33,7 @@ class ReceptionController extends Controller
     }
 
 
-    public function getRegistration(Request $request){
+    public function getRegistrationsToday(Request $request){
         $registration = Registration::where( DB::raw('DAY(created_at)'), '=', date('d'))->get();
         $vets = Employee::where('position', 'Vet')->get();
 
@@ -146,5 +146,9 @@ class ReceptionController extends Controller
                 ->with('clients', $clients)
                 ->with('reg_id', $id)
                 ->render()]);
+    }
+
+    public function getViewRegTable(){
+        return view('reception.patient-list.viewPatientList');
     }
 }

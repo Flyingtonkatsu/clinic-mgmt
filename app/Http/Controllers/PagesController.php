@@ -45,7 +45,7 @@ class PagesController extends Controller
 		$access = Auth::user()->access_id;
 
 		if($access == 2 || $access == 0) {
-		return view('reception.patient-list.mainReception')
+		return view('reception.mainReception')
 			->with('registrations', Registration::all())
 			->with('vets', Employee::all());
 		}

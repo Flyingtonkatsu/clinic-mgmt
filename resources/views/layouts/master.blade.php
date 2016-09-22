@@ -63,6 +63,11 @@
                 <div id="alert-message" hidden="true">    
                 </div>
 
+                <div class="row">
+                    <div class="col-md-12" id="page-content">   
+                    </div>
+                </div>
+                
                 @yield('content')
 
             </div>

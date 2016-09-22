@@ -71,12 +71,12 @@ class RegistrationController extends Controller
         return response()->json(['state' => 'success', 'message' => 'Successfully registered!', 'firstname' => $firstname, 'lastname'=> $lastname, 'patients' => $patients]);
     }
 
-    public function viewNewClient(){
+    public function getViewNewClient(){
         return view('registration.newclient.viewNewClient')
             ->with('cities', City::all());
     }
 
-    public function viewQueue(){
+    public function getViewQueue(){
         return view('registration.queue.viewQueue');
     }
 }

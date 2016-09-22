@@ -13,15 +13,6 @@
 	</li>
 @endsection
 
-@section('content')
-<div class="row">
-	<div class="col-md-12" id="page-content">	
-
-	</div>
-</div>
-@endsection
-
-
 @section('scripts')
 	<script src="/js/registration/registration-main.js"></script>
 @endsection
