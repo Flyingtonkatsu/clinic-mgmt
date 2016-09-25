@@ -30,10 +30,17 @@ class LoginsTableSeeder extends Seeder
         ]);
 
         User::create([
-            'username' => 'consultation',
+            'username' => 'vet1',
             'password' => bcrypt('password'),
             'access_id' => 3,
             'employee_id' => 4
+        ]);
+
+        User::create([
+            'username' => 'vet2',
+            'password' => bcrypt('password'),
+            'access_id' => 3,
+            'employee_id' => 5
         ]);
     }
 }

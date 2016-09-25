@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Registration;
+use App\Models\Position;
 use App\Models\Client;
 use App\Models\Employee;
 use App\Models\Patient;
@@ -36,7 +37,8 @@ class ReceptionController extends Controller
 
     public function getRegistrationsToday(Request $request){
         $registration = Registration::where( DB::raw('DAY(created_at)'), '=', date('d'))->get();
-        $vets = Employee::where('position', 'Vet')->get();
+        $pos = Position::where('name', 'veterinarian')->first();
+        $vets = Employee::where('position_id', $pos->id)->get();
 
         return view('reception.patient-list.tableRegistration')
             ->with('registrations', $registration)

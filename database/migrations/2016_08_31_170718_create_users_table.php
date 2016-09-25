@@ -12,7 +12,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('username')->unique();
             $table->string('password');
-            $table->integer('access_id');   // determines what modules can be accessed by user
+            $table->integer('access_id');
             $table->integer('employee_id');
             $table->rememberToken();
             $table->timestamps();

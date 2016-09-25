@@ -13,17 +13,13 @@ function addPatient(){
 
 	patient_count++;
 	$('#div-patients-list').append(
-		"<input class='form-control' style='padding-bottom: 5px' placeholder='Enter patient name' id='patient" + 
+		"<input class='form-control' placeholder='Enter patient name' id='patient" + 
 		patient_count + "'>"
 	);
 	
 	if(patient_count == patient_limit){
 		$('#btn-add-patient').attr('disabled', true);
 	}
-
-	$("#div-input-firstname").attr("class", "col-sm-4");
-	$("#div-input-lastname").attr("class", "col-sm-4");
-	$("#div-patients-list").attr("class", "col-sm-4");
 }
 
 function cancelReg(){

@@ -12,7 +12,7 @@ class CreateEmployeesTable extends Migration
             $table->char('number', 6);
             $table->char('firstname', 30);
             $table->char('lastname', 30);
-            $table->char('position', 30);
+            $table->integer('position_id');
             $table->char('initials', 3);
             $table->integer('login_id');
             $table->timestamps();

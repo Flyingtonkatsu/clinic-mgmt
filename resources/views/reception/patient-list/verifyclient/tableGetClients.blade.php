@@ -4,7 +4,7 @@
 	@foreach($clients as $client)
 		<tr>
 			<td>
-				<button class="btn btn-primary btn-verify-selected-client" data-reg-id = "{{$client->id}}" data-reg-id="{{$reg_id}}"> Verify </button>
+				<button class="btn btn-primary btn-verify-selected-client" data-client-id="{{$client->id}}" data-reg-id="{{$reg_id}}"> Verify </button>
 			</td>
 			<td>
 				{{$client->lastname}}, {{$client->firstname}}
