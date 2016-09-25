@@ -10,6 +10,7 @@ use App\Models\Employee;
 use App\Models\Patient;
 use App\Models\Specie;
 use App\Models\Breed;
+use App\Models\City;
 use Illuminate\Support\Facades\DB;
 use DateTime;
 
@@ -43,10 +44,21 @@ class ReceptionController extends Controller
     }
 
     public function verifyClient(Request $request){
-        $id = $request->input('reg_id');
+        $reg_id = $request->input('reg_id');
         $client_id = $request->input('client_id');
-        $reg = Registration::where('id', $id)->first();
+        $client = Client::find($client_id);
+        $reg = Registration::find($reg_id);
+        $email = $request->input('email');
+        $landline =  $request->input('landline');
+        $mobile = $request->input('mobile');
+        $address = $request->input('address');
+        $city = $request->input('city');
+
         $reg->update(['client_verified' => '1', 'client_id' => $client_id]);
+        $client->update([
+            'landline' => $landline, 'email' => $email, 'mobile' => $mobile,
+            'address' => $address, 'city' => $city
+            ]);
 
         return response()->json($reg);
     }
@@ -146,6 +158,18 @@ class ReceptionController extends Controller
                 ->with('clients', $clients)
                 ->with('reg_id', $id)
                 ->render()]);
+    }
+
+    public function getViewClientDetails(Request $request){
+        $reg_id = $request->input('reg_id');
+        $client_id = $request->input('client_id');
+        $client = Client::find($client_id);
+        $cities = City::all();
+
+        return view('reception.patient-list.verifyclient.formVerifyClientDetails')
+            ->with('client', $client)
+            ->with('reg_id', $reg_id)
+            ->with('cities', $cities);
     }
 
     public function getViewRegTable(){

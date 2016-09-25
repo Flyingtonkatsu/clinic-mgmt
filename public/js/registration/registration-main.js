@@ -5,9 +5,9 @@ $(document).ready(function(){
 });
 
 function getViewQueue(event){
-	getView($(this), 'registration/viewQueue');
+	getMainView($(this), 'registration/viewQueue');
 }
 
 function getViewNewClient(event){
-	getView($(this), 'registration/viewNewClient');
+	getMainView($(this), 'registration/viewNewClient');
 }

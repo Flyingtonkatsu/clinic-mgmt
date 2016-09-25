@@ -4,5 +4,5 @@ $(document).ready(function(){
 });
 
 function getViewRegTable(event){
-	return getView($(this), 'reception/viewRegTable');
+	return getMainView($(this), 'reception/viewRegTable');
 }

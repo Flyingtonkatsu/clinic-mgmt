@@ -16,26 +16,54 @@ function newClient(event){
 }
 
 
-var verifyClientWithID = function(id){
-	return function verifyClient(event){
+var showClientDetails = function(id){
+	return function showClientDetails(event){
 		var element = $(this);
 		var client_id = element.attr('data-reg-id');
 		var data = {'client_id' : client_id, 'reg_id' : id};
+		loadButton($('.btn-verify-selected-client'), ' Verify');
 
-		loadButton($('.btn-verify-selected-client'), ' Verify' );
-		
 		$.post(
-			"/reception/verifyclient",
+			"reception/verifyClientDetails",
 			data,
-
-			function(){
-				alertMessage('success', "Successfully verified client!");
+			function(view){
 				$('#modal-verify-client').modal("hide");
-				refreshRegistrationTable();
+				$('#modal-content-verify-client-details').html(view);
+				$('#modal-verify-client-details').modal('show');
+				$('#btn-update-client').on('click touch', verifyClient);
 			}
 		);
 	};
+};
 
+function verifyClient(event){
+	var element = $(this);
+	var client_id = $('#client-id').val();
+	var reg_id = $('#reg-id').val();
+	var email = $('#input-email').val();
+	var address = $('#input-address').val();
+	var mobile = $('#input-mobile').val();
+	var landline = $('#input-landline').val();
+	var city = $('#select-city').val();
+	var data = {
+		'client_id' : client_id, 'reg_id' : reg_id,
+		'email' : email, 'address' : address,
+		'mobile' : mobile, 'landline' : landline,
+		'city' : city
+		};
+
+	loadButton($('#btn-update-client'), ' Confirm' );
+	
+	$.post(
+		"/reception/verifyclient",
+		data,
+
+		function(){
+			alertMessage('success', "Successfully verified client!");
+			$('#modal-verify-client-details').modal("hide");
+			refreshRegistrationTable();
+		}
+	);
 };
 
 function searchClients(event){
@@ -52,7 +80,7 @@ function searchClients(event){
 		clientinfo,
 		function(data) {
 			$('#table-verify-client').html(data.view);
-			$('.btn-verify-selected-client').on("touch click", verifyClientWithID(id));
+			$('.btn-verify-selected-client').on("touch click", showClientDetails(id));
 			$('#modal-verify-client').modal("show");
 			$('.btn-verify-client').attr('disabled', false);
 			$('.btn-new-client').on("click touch", newClient);

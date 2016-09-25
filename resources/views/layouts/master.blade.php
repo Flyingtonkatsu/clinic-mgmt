@@ -38,7 +38,6 @@
                     </a>
                 </li>
 
-
                 <li class="sidebar-nav-head">
                     @yield('taskbar-head')
                 </li>
@@ -51,13 +50,11 @@
                     @endif
                     <a href="logout"><i class="fa fa-sign-out"></i> Logout {{Auth::user()->username}}</a>
                 </li>
-               
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div id="alert-message" hidden="true">    
@@ -67,25 +64,21 @@
                     <div class="col-md-12" id="page-content">   
                     </div>
                 </div>
-                
+
                 @yield('content')
 
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
-</div>
 
-    <script src="js/jquery-3.1.0.min.js"></script>
-    <script src="js/jquery.mobile-1.4.5.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/ajax-setup.js"></script>
-    <script src="js/utils.js"></script>
-
-    @yield('scripts')
-
-</body>
+    <!-- Scripts -->
+        <script src="js/jquery-3.1.0.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/ajax-setup.js"></script>
+        <script src="js/utils.js"></script>
+        @yield('scripts')
+    </body>
 
 </html>

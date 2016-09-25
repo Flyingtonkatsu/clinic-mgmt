@@ -16,7 +16,7 @@ class CreateClientsTable extends Migration
             $table->increments('id');
             $table->char('firstname', 30);
             $table->char('lastname', 30);
-            $table->char('address', 50);
+            $table->char('address', 150);
             $table->char('birthday', 11);
             $table->char('email', 50);
             $table->char('mobile', 15);

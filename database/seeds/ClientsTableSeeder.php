@@ -11,7 +11,8 @@ class ClientsTableSeeder extends Seeder
         Client::create([
             'firstname'  => 'John', 
             'lastname'  => 'Doe',
-            'address' => 'Taytay',
+            'address' => 'Lt 5, Bk 2, Golden City Subdivision, Brgy. San Pedro',
+            'City' => 1,
             'email' => 'johndoe@email.com',
             'birthday' => 'Feb 12 1985',
             'landline' => '6453829',
@@ -21,7 +22,8 @@ class ClientsTableSeeder extends Seeder
         Client::create([
             'firstname' => 'Juan',
             'lastname' => 'dela Cruz',
-            'address' => 'Pasig City',
+            'address' => '#24, Apple street, St. Michael Subdivision',
+            'City' => 3,
             'email' => 'jdc@gmail.com',
             'birthday' => 'Apr 02 1994',
             'landline' => '2842002',
@@ -31,7 +33,8 @@ class ClientsTableSeeder extends Seeder
         Client::create([
             'firstname' => 'Juan',
             'lastname' => 'dela Cruz',
-            'address' => 'Marikina City',
+            'address' => 'Aglipay Rd, White Plains Village',
+            'City' => 5,
             'email' => 'dcruz.jaun@gmail.com',
             'birthday' => 'Nov 02 1985',
             'landline' => '6582931',

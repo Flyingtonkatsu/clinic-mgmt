@@ -15,7 +15,4 @@
 
 @section('scripts')
 	<script src="/js/reception/reception-main.js"></script>
-	<script src="/js/reception/reception-registration-table.js"></script>
-	<script src="/js/reception/reception-client-controls.js"></script>
-	<script src="/js/reception/reception-patient-controls.js"></script>
 @endsection
