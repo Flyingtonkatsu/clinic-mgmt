@@ -42,3 +42,4 @@ Route::post('reception/verifyexistingpatient', 'ReceptionController@verifyPatien
 // Routes for Admin Controller
 Route::get('admin/viewEmployeeReg', 'AdminController@getViewEmployeeRegistration');
 Route::get('admin/viewEmployeeList', 'AdminController@getViewEmployeeList');
+Route::post('admin/registerNewEmployee', 'AdminController@registerNewEmployee');
