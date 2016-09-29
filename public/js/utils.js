@@ -27,7 +27,7 @@ function unloadButton(button, label){
 }
 
 
-function getView(navitem, url, container){
+function getView(url, container){
 	container.html('<i class="fa fa-spinner fa-pulse fa-3x"></i>');
 
 	$.get(url, 
@@ -36,8 +36,17 @@ function getView(navitem, url, container){
 	});
 }
 
+function getPostView(url, container, data){
+	container.html('<i class="fa fa-spinner fa-pulse fa-3x"></i>');
+	$.post(url,
+		data,
+		function(view){
+			container.html(view);
+	});
+}
+
 function getMainView(navitem, url){
 	$('.sidebar-nav-item').attr('class', 'sidebar-nav-item');
 	navitem.attr('class', 'sidebar-nav-item sidebar-nav-active')
-	getView(navitem, url, $('#page-content'));
+	getView(url, $('#page-content'));
 }

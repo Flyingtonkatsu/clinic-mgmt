@@ -22,7 +22,7 @@ class CreateRegistrationTable extends Migration
             $table->char('purpose', 20);
             $table->char('weight', 7);
 
-            $table->integer('vet_id');     // foreign key for entry in vets table
+            $table->integer('vet_id');     // foreign key for entry in employees table
             $table->integer('client_id');  // foreign key for entry in clients table
             $table->integer('patient_id'); // foreign key for entry in patients table
             
