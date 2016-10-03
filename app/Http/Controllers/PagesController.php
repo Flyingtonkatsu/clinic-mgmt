@@ -19,6 +19,8 @@ class PagesController extends Controller
 
 	public function index(){
 		$redirect = Auth::user()->access_id;
+		$employee_id = Auth::user()->employee_id;
+		$employee = Employee::find($employee_id);
 
         switch($redirect){
             case 1:
@@ -28,26 +30,33 @@ class PagesController extends Controller
             case 3:
             	return redirect('consultation');
             default:
-                return view('index');
+                return view('index')
+                	->with('employee', $employee);
         }
 	}
 
 	public function registration(){
 		$access = Auth::user()->access_id;
+		$employee_id = Auth::user()->employee_id;
+		$employee = Employee::find($employee_id);
 
 		if($access == 1 || $access == 0)
-        	return view('registration.mainRegistration');
+        	return view('registration.mainRegistration')
+        			->with('employee', $employee);
         
 		return redirect('index');
     }
 
 	public function reception(){
 		$access = Auth::user()->access_id;
+		$employee_id = Auth::user()->employee_id;
+		$employee = Employee::find($employee_id);
 
 		if($access == 2 || $access == 0) {
 		return view('reception.mainReception')
 			->with('registrations', Registration::all())
-			->with('vets', Employee::all());
+			->with('vets', Employee::all())
+			->with('employee', $employee);
 		}
 
 		return redirect('index');
@@ -55,18 +64,24 @@ class PagesController extends Controller
 
 	public function consultation(){
 		$access = Auth::user()->access_id;
+		$employee_id = Auth::user()->employee_id;
+		$employee = Employee::find($employee_id);
 
 		if($access == 3 || $access == 0)
-			return view('consultation.mainConsultation');
+			return view('consultation.mainConsultation')
+					->with('employee', $employee);
 
 		return redirect('index');
 	}
 
 	public function admin(){
 		$access = Auth::user()->access_id;
+		$employee_id = Auth::user()->employee_id;
+		$employee = Employee::find($employee_id);
 
 		if($access == 0)
-			return view('admin.mainAdmin');
+			return view('admin.mainAdmin')
+					->with('employee', $employee);
 
 		return redirect('index');
 	}

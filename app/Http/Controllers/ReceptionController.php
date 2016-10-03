@@ -151,14 +151,14 @@ class ReceptionController extends Controller
     }
 
     public function getClients(Request $request){
-        $id = $request->input('id');
+        $reg_id = $request->input('reg_id');
         $firstname = $request->input('firstname');
         $lastname = $request->input('lastname');   
         $clients = Client::where(['firstname' => $firstname, 'lastname' => $lastname])->get();
 
         return response()->json(['view' => view('reception.patient-list.verifyclient.tableGetClients')
                 ->with('clients', $clients)
-                ->with('reg_id', $id)
+                ->with('reg_id', $reg_id)
                 ->render()]);
     }
 

@@ -48,7 +48,8 @@
                     @if(Auth::user()->access_id == 0)
                     <a href="index"><i class="fa fa-th"></i> Back to Modules
                     @endif
-                    <a href="logout"><i class="fa fa-sign-out"></i> Logout {{Auth::user()->username}}</a>
+                    <a href="logout"><i class="fa fa-sign-out"></i> Logout {{$employee->firstname}}
+                    </a>
                 </li>
             </ul>
         </div>

@@ -16,25 +16,24 @@ function newClient(event){
 }
 
 
-var showClientDetails = function(id){
-	return function showClientDetails(event){
-		var element = $(this);
-		var client_id = element.attr('data-reg-id');
-		var data = {'client_id' : client_id, 'reg_id' : id};
-		loadButton($('.btn-verify-selected-client'), ' Verify');
+function showClientDetails(event){
+	var element = $(this);
+	var client_id = element.attr('data-client-id');
+	var reg_id = element.attr('data-reg-id');
+	var data = {'client_id' : client_id, 'reg_id' : reg_id};
+	loadButton($('.btn-verify-selected-client'), ' Verify');
 
-		$.post(
-			"reception/verifyClientDetails",
-			data,
-			function(view){
-				$('#modal-verify-client').modal("hide");
-				$('#modal-content-verify-client-details').html(view);
-				$('#modal-verify-client-details').modal('show');
-				$('#btn-update-client').on('click touch', verifyClient);
-			}
-		);
-	};
-};
+	$.post(
+		"reception/verifyClientDetails",
+		data,
+		function(view){
+			$('#modal-verify-client').modal("hide");
+			$('#modal-content-verify-client-details').html(view);
+			$('#modal-verify-client-details').modal('show');
+			$('#btn-update-client').on('click touch', verifyClient);
+		}
+	);
+}
 
 function verifyClient(event){
 	var element = $(this);
@@ -68,10 +67,10 @@ function verifyClient(event){
 
 function searchClients(event){
 	var element = $(this);
-	var id = element.attr('data-reg-id');
+	var reg_id = element.attr('data-reg-id');
 	var lastname = element.attr('data-client-lname');
 	var firstname = element.attr('data-client-fname');
-	var clientinfo = {'id' : id, 'lastname' : lastname, 'firstname' : firstname};
+	var clientinfo = {'reg_id' : reg_id, 'lastname' : lastname, 'firstname' : firstname};
 	$('.btn-verify-client').attr('disabled', true);
 	loadButton(element);
 
@@ -80,7 +79,7 @@ function searchClients(event){
 		clientinfo,
 		function(data) {
 			$('#table-verify-client').html(data.view);
-			$('.btn-verify-selected-client').on("touch click", showClientDetails(id));
+			$('.btn-verify-selected-client').on("touch click", showClientDetails);
 			$('#modal-verify-client').modal("show");
 			$('.btn-verify-client').attr('disabled', false);
 			$('.btn-new-client').on("click touch", newClient);

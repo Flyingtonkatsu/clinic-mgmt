@@ -2,7 +2,6 @@
 $(document).ready(function(){
 	$('#btn-refresh').on("click touch", refreshRegistrationTable);
 	refreshRegistrationTable();
-	//setInterval(refreshRegistrationTable, 60000);
 });
 
 

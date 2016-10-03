@@ -44,6 +44,6 @@
 @include('reception.patient-list.newpatient.modalNewPatient')
 @include('reception.patient-list.verifyclient.modalVerifyClientDetails')
 
-<script src="/js/reception/reception-registration-table.js"></script>
-<script src="/js/reception/reception-client-control.js"></script>
-<script src="/js/reception/reception-patient-controls.js"></script>
+<script src="/js/reception/reception-registration-table.js?ver=1"></script>
+<script src="/js/reception/reception-client-control.js?ver=1"></script>
+<script src="/js/reception/reception-patient-controls.js?ver=1"></script>

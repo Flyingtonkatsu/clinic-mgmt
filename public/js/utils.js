@@ -27,21 +27,25 @@ function unloadButton(button, label){
 }
 
 
-function getView(url, container){
+function getView(url, container, callback){
 	container.html('<i class="fa fa-spinner fa-pulse fa-3x"></i>');
 
 	$.get(url, 
 		function(view){
 			container.html(view);
+			if(callback != null)
+				callback();
 	});
 }
 
-function getPostView(url, container, data){
+function getPostView(url, container, data, callback){
 	container.html('<i class="fa fa-spinner fa-pulse fa-3x"></i>');
 	$.post(url,
 		data,
 		function(view){
 			container.html(view);
+			if(callback != null)
+				callback();
 	});
 }
 

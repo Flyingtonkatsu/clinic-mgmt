@@ -15,14 +15,15 @@
 			<table id="patient-list" class="table table-sm table-bordered table-hover text-center table-responsive" >
 	            <thead>
 	              <tr>
-	                <th class="text-center">Client Name</th>
-	                <th class="text-center">Patient Name</th>
-	                <th class="text-center">Purpose</th>
-	                <th class="text-center">Time In</th>
+	              	<th class="text-center col-sm-2"></th>
+	                <th class="text-center col-sm-3">Client Name</th>
+	                <th class="text-center col-sm-3">Patient Name</th>
+	                <th class="text-center col-sm-2">Purpose</th>
+	                <th class="text-center col-sm-2">Time In</th>
 	              </tr>
 	            </thead>
 
-	            <tbody id="table-registration">
+	            <tbody id="table-registration" style="text-align: center">
 	        
 	            </tbody>
           	</table>
@@ -32,4 +33,4 @@
 	</div>
 </div>
 
-<script src="/js/consultation/consultation-patientlist.js"></script>
+<script src="/js/consultation/consultation-patientlist.js?var=2"></script>

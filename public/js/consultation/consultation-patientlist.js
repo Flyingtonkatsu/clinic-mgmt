@@ -5,5 +5,17 @@ $(document).ready(function(){
 
 function refreshPatientList(){
 	var container = $("#table-registration");
-	getView('consultation/getPatientList', container);
+	getView('consultation/getPatientList', container, function(){
+		$(".btn-consult").on("click touch", showNewConsultionForm);
+	});
+}
+
+function showNewConsultionForm(event){
+	var button = $(this);
+	var patient_id = button.attr("data-patient-id");
+	var client_id = button.attr("data-client-id");
+	var data = {'patient_id' : patient_id, 'client_id' : client_id};
+
+	loadButton(button, "Consult");
+	getPostView('consultation/viewNewConsultation', $('#page-content'), data);
 }
