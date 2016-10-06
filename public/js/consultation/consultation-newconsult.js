@@ -30,10 +30,10 @@ function showModalQty(event){
 
 function issueMed(event){
 	var med_id = $("#med-id").val();
-	var med_qty = $("#med-qty").val();
+	var qty = $("#med-qty").val();
 	var btn_table = $("#btn-issue-med-" + med_id);
 	var consult_id = $("#consult-id").val();
-	var data = {'med_id' : med_id, 'qty' : med_qty, 'consult_id' : consult_id};
+	var data = {'med_id' : med_id, 'qty' : qty, 'consult_id' : consult_id};
 	var btn_submit = $(this);
 
 	if(isNaN(med_qty) || med_qty <= 0){
@@ -47,7 +47,7 @@ function issueMed(event){
 	$.post('consultation/issueMed', data, function(data){
 		$("#modal-meds").modal("hide");
 		btn_table.attr('readonly', 'true');
-		btn_table.html('Issued');
+		btn_table.html('Issued ' + qty);
 		btn_table.attr('class', 'btn btn-sm btn-success');
 		btn_submit.attr('disabled', 'false');
 		btn_submit.html('Issue');

@@ -8,7 +8,7 @@ class CreateConsultMedsTable extends Migration
    
     public function up()
     {
-        Schema::create('consult_meds', function(Blueprint $table){
+        Schema::create('med_requests', function(Blueprint $table){
             $table->increments('id');
             $table->integer('med_id');
             $table->integer('consult_id');

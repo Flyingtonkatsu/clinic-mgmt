@@ -4,8 +4,8 @@ namespace App\models;
 use Illuminate\Database\Eloquent\Model;
 
 
-class ConsultMed extends Model {
-	protected $table = 'consult_meds';
+class MedRequest extends Model {
+	protected $table = 'med_requests';
 
 	protected $fillable = array(
 		'consult_id', 'med_id', 'qty'

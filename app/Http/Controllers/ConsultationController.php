@@ -10,7 +10,7 @@ use App\Models\Client;
 use App\Models\Patient;
 use App\Models\User;
 use App\Models\Med;
-use App\Models\ConsultMed;
+use App\Models\MedRequest;
 use App\Models\Employee;
 use App\Models\Consult;
 
@@ -72,7 +72,7 @@ class ConsultationController extends Controller
 
         // Check for qty onhand here
 
-        ConsultMed::create([
+        MedRequest::create([
             'med_id' => $med_id,
             'consult_id' => $consult_id,
             'qty' => $qty    
