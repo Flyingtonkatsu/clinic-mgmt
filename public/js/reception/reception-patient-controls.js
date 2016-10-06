@@ -90,7 +90,8 @@ function submitNewPatient(event){
 				'species' : species,
 				'breed' : breed
 	};
-	unloadButton($(this));
+	
+	loadButton($(this));
 
 	$.post(
 		"reception/addnewclient",

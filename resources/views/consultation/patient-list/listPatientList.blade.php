@@ -1,10 +1,11 @@
 {{$patient_count = 0}}
+
 @foreach($registrations as $registration)
 	<tr>
 		{{ $client = $clients->find($registration->client_id) }}
 		{{ $patient = $patients->find($registration->patient_id)}}
 
-		<td class="col-sm-2"> <button class="btn btn-primary btn-consult" data-patient-id="{{$patient->id}}" data-client-id="{{$client->id}}"> <i class="fa fa-edit"></i> Consult</button> </td>
+		<td class="col-sm-2"> <button class="btn btn-primary btn-consult" data-patient-id="{{$patient->id}}" data-client-id="{{$client->id}}" data-reg-id="{{$registration->id}}"> <i class="fa fa-edit"></i> Consult</button> </td>
 		<td class="col-sm-3"> {{ $client->lastname }},  {{$client->firstname}} </td>
 		<td class="col-sm-3"> {{ $patient->name }} </td>
 		<td class="col-sm-2"> {{ $registration->purpose }} </td>

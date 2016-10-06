@@ -10,7 +10,7 @@
 	<input type="hidden" id="patient-name" value="{{$patient_name}}">
 
 	<div class="form-group has-feedback">
-		<label class="control-label col-sm-2"><b>Patient:</b></label>
+		<label class="control-label col-sm-2"><b>Client:</b></label>
 		<label class="control-label col-sm-3" style="text-align: left">{{$client_name}}</label>
 	</div>
 

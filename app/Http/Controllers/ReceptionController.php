@@ -31,6 +31,9 @@ class ReceptionController extends Controller
             $field => $value
             ]);
 
+        if($field == 'room')
+            $reg->update(['status' => 'Queued']);
+
         return response()->json(['status' => 'ok', 'message' => 'Successfully updated registration record!', 'value' => $value]);
     }
 

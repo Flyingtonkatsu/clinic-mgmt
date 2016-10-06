@@ -1,0 +1,22 @@
+.table-responsive thead {
+  width: 100%%;
+}
+.table-responsive tbody {
+  height: 120px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.table-responsive tbody > tr > td {
+	height: 42px;
+}
+
+.table-responsive thead, .table-responsive tbody, .table-responsive tr, .table-responsive td, .table-responsive th {
+  display: block;
+  text-align: center;
+}
+
+.table-responsive tbody td, .table-responsive thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}

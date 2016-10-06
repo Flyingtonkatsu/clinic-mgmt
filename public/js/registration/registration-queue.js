@@ -24,7 +24,9 @@ function addPatient(){
 
 function cancelReg(){
 	$('#form-reg')[0].reset();
-	$('#div-patients-list').html('<input class="form-control" placeholder="Enter patient name" id="patient1">');
+	$('#div-patients-list').html('<label>Patient Name(s):</label>' +
+	    		'<label><small>(For multiple patients, please enter one patient per line.)</small></label>' +
+				'<input class="form-control" placeholder="Enter patient name" id="patient1">');
 	patient_count = 1;
 }
 
@@ -47,21 +49,21 @@ function submitReg(){
 	}
 
 	// Validation:
-	$("#div-input-firstname").attr("class", "col-sm-4");
-	$("#div-input-lastname").attr("class", "col-sm-4");
-	$("#div-patients-list").attr("class", "col-sm-4");
+	$("#div-input-firstname").attr("class", "form-group");
+	$("#div-input-lastname").attr("class", "form-group");
+	$("#div-patients-list").attr("class", "form-group");
 
 	//validation goes here:
 	if( $("#input-firstname").val() === ''){
 		hasError = true;
 		request.abort();
-		$("#div-input-firstname").attr("class", "col-sm-4 has-error has-feedback");
+		$("#div-input-firstname").attr("class", "form-group has-error has-feedback");
 	}
 
 	if( $("#input-lastname").val() === ''){
 		hasError = true;
 		request.abort();
-		$("#div-input-lastname").attr("class", "col-sm-4 form-group has-error");
+		$("#div-input-lastname").attr("class", "form-group form-group has-error");
 	}
 
 	if(hasError){
@@ -84,7 +86,7 @@ function submitReg(){
 			}
 			else {
 				alertMessage('danger', response.message);
-				$("#div-patients-list").attr("class", "col-sm-4 has-error");
+				$("#div-patients-list").attr("class", "form-group has-error");
 			}
 			$(".btn").attr("disabled", false);
 			$("input").attr("disabled", false);

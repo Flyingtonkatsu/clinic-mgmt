@@ -15,16 +15,16 @@
 			<table id="patient-list" class="table table-sm table-bordered table-hover text-center table-responsive" >
 	            <thead>
 	              <tr>
-	                <th class="text-center">Client Name</th>
-	                <th class="text-center">Verify Client</th>
-	                <th class="text-center">Patient Name</th>
-	                <th class="text-center">Verify Patient</th>
-	                <th class="text-center">Purpose</th>
-	                <th class="text-center">Weight(kg)</th>
-	                <th class="text-center">Attending Vet</th>
-	                <th class="text-center">Consult Room</th>
-	                <th class="text-center">Status</th>
-	                <th class="text-center">Time In</th>
+	                <th class="text-center col-sm-2">Client Name</th>
+	                <th class="text-center col-sm-1">Verify Client</th>
+	                <th class="text-center col-sm-1">Patient Name</th>
+	                <th class="text-center col-sm-1">Verify Patient</th>
+	                <th class="text-center col-sm-2">Purpose</th>
+	                <th class="text-center col-sm-1">Weight(kg)</th>
+	                <th class="text-center col-sm-1">Attending Vet</th>
+	                <th class="text-center col-sm-1">Consult Room</th>
+	                <th class="text-center col-sm-1">Status</th>
+	                <th class="text-center col-sm-1">Time In</th>
 	              </tr>
 	            </thead>
 

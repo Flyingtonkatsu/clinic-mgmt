@@ -1,20 +1,20 @@
 @foreach($registrations as $reg)
 	<tr>
-		<td class="text-nowrap">
+		<td class="text-nowrap col-sm-2">
 			{{$reg->client_lname}}, {{$reg->client_fname}} 
 		</td>
 
 		@if($reg->client_verified)
 
-			<td class="text-nowrap"> <span class="glyphicon glyphicon-ok" style="color: green"></span> </td>
+			<td class="text-nowrap col-sm-1"> <span class="glyphicon glyphicon-ok" style="color: green"></span> </td>
 
-			<td class="text-nowrap"> {{$reg->patient_name}} </td>
+			<td class="text-nowrap col-sm-1"> {{$reg->patient_name}} </td>
 
 			@if($reg->patient_verified)
-				<td class="text-nowrap">
+				<td class="text-nowrap col-sm-1">
 					<span class="glyphicon glyphicon-ok" style="color: green"></span>
 				</td>
-				<td class="text-nowrap">
+				<td class="text-nowrap col-sm-2">
 		    		@if($reg->purpose == '')
 		    			<select class="form-control select-purpose" data-reg-id="{{$reg->id}}" style="width:150px">
 		        			<option value="" disabled selected>Purpose</option>
@@ -29,7 +29,7 @@
 		    	</td>
 
 
-		    	<td class="text-nowrap">
+		    	<td class="text-nowrap col-sm-1">
 		    		@if($reg->weight == '')
 		    			<input class="form-control input-weight" placeholder="Enter weight" data-reg-id="{{$reg->id}}" maxlength="10" align="center" style="width: 110px">
 		    		@else
@@ -38,7 +38,7 @@
 				</td>
 
 
-		    	<td class="text-nowrap">
+		    	<td class="text-nowrap col-sm-1">
 		    		@if($reg->vet_id == '')
 
 		    			<select class="form-control select-vet" data-reg-id="{{$reg->id}}" style="width:120px">
@@ -54,10 +54,10 @@
 		    		@endif
 				</td>
 
-		    	<td class="text-nowrap">
+		    	<td class="text-nowrap col-sm-1">
 		    		@if($reg->weight != '' && $reg->purpose != '' && $reg->vet_id != '')
 		    			@if($reg->room == '')
-			    			<select class="form-control select-room" data-reg-id="{{$reg->id}}" style="width:150px">
+			    			<select class="form-control select-room" data-reg-id="{{$reg->id}}">
 			        			<option value="" disabled selected> Assign Room</option>
 		    					@for($room = 1; $room <= 6; $room++)
 			    					<option value="0{{$room}}">0{{$room}}</option>
@@ -73,7 +73,7 @@
 					@endif
 		    	</td>
 		    @else
-		    	<td class="text-nowrap"> 
+		    	<td class="text-nowrap col-sm-1"> 
 					<button type="button" class="btn btn-danger btn-verify-patient" data-dismiss="modal" data-client-id="{{$reg->client_id}}" data-reg-id="{{$reg->id}}"  data-patient-name="{{$reg->patient_name}}"> <i class="fa fa-question"></i> </button>
 				</td>
 		    	<td class="text-nowrap" colspan="4">
@@ -82,21 +82,21 @@
 		    @endif
 		    
 		@else
-			<td class="text-nowrap">
-			<button type="button" class="btn btn-danger btn-verify-client" data-dismiss="modal" data-client-lname="{{$reg->client_lname}}" data-reg-id="{{$reg->id}}"  data-client-fname="{{$reg->client_fname}}" disabled="true"> <i class="fa fa-question"></i> </button>
+			<td class="text-nowrap col-sm-1">
+				<button type="button" class="btn btn-danger btn-verify-client" data-dismiss="modal" data-client-lname="{{$reg->client_lname}}" data-reg-id="{{$reg->id}}"  data-client-fname="{{$reg->client_fname}}" disabled="true"> <i class="fa fa-question"></i> </button>
 			</td>
 
-			<td class="text-nowrap"> {{$reg->patient_name}}</td>
+			<td class="text-nowrap col-sm-1"> {{$reg->patient_name}}</td>
 
 			<td colspan="5">
 				Please verify client.
 			</td>
 		@endif
 
-		<td class="text-nowrap"> {{ $reg->status }}  </td>
+		<td class="text-nowrap col-sm-1"> {{ $reg->status }}  </td>
 
 		@if($reg->created_at != null)
-			<td class="text-nowrap"> {{ $reg->created_at->format('H:i') }} </td>
+			<td class="text-nowrap col-sm-1"> {{ $reg->created_at->format('H:i') }} </td>
 		@endif
 	</tr>
 @endforeach
