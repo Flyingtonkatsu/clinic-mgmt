@@ -10,6 +10,4 @@ class MedRequest extends Model {
 	protected $fillable = array(
 		'consult_id', 'med_id', 'qty'
 		);
-
-	public $timestamps = false;
 }

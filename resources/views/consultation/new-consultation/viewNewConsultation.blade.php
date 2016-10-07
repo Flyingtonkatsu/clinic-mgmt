@@ -31,7 +31,7 @@
 
 		<div class="row">
 			<div class="col-sm-3">
-				Weight: <b> {{$consult->weight}}</b>	 
+				Weight(kg): <b> {{$consult->weight}}</b>	 
 			</div>
 			<div class="col-sm-3">
 				Birthdate: <b> {{$patient->birthdate}} </b>
@@ -72,55 +72,55 @@
 
 			<div class="panel-body">
 				<div class="row" style="padding-top: 10px">
-					<div class="col-sm-3" style="text-align: right">
+					<div class="col-sm-2" style="text-align: right">
 						Examination:
 					</div>
-					<div class="col-sm-9">
-						<textarea style="width: 100%; resize: none" rows="5" placeholder="Enter findings here..." id="txt-exam"></textarea>
+					<div class="col-sm-8">
+						<textarea style="width: 100%; resize: none" rows="5" placeholder="Enter findings here..." id="txt-exam">{{$consult->txt_examination}}</textarea>
 					</div>
 				</div>
 
 				<div class="row" style="padding-top: 10px">
-					<div class="col-sm-3" style="text-align: right">
+					<div class="col-sm-2" style="text-align: right">
 						Differential Diagnosis:
 					</div>
-					<div class="col-sm-9">
-						<textarea style="width: 100%; resize: none" rows="5" placeholder="Enter diagnosis here..." id="txt-diff-diag"></textarea>
+					<div class="col-sm-8">
+						<textarea style="width: 100%; resize: none" rows="5" placeholder="Enter diagnosis here..." id="txt-diff-diag">{{$consult->txt_diff_diag}}</textarea>
 					</div>
 				</div>
 
 				<div class="row" style="padding-top: 10px">
-					<div class="col-sm-3" style="text-align: right">
+					<div class="col-sm-2" style="text-align: right">
 						Consult Diagnosis:
 					</div>
-					<div class="col-sm-9">
-						<textarea style="width: 100%; resize: none" rows="5" placeholder="Enter diagnosis here..." id="txt-consult-diag"></textarea>
+					<div class="col-sm-8">
+						<textarea style="width: 100%; resize: none" rows="5" placeholder="Enter diagnosis here..." id="txt-consult-diag">{{$consult->txt_consult_diag}}</textarea>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col-sm-3" style="text-align: right">
+					<div class="col-sm-2" style="text-align: right">
 						Notes:
 					</div>
-					<div class="col-sm-9">
-						<textarea style="width: 100%; resize: none" rows="5" placeholder="Enter notes here..." id="txt-notes"></textarea>
+					<div class="col-sm-8">
+						<textarea style="width: 100%; resize: none" rows="5" placeholder="Enter notes here..." id="txt-notes">{{$consult->txt_notes}}</textarea>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col-sm-3" style="text-align: right">
+					<div class="col-sm-2" style="text-align: right">
 						Regime Script:
 					</div>
-					<div class="col-sm-9">
-						<textarea style="width: 100%; resize: none" rows="5" placeholder="Enter regime script here..." id="txt-reg-script"></textarea>
+					<div class="col-sm-8">
+						<textarea style="width: 100%; resize: none" rows="5" placeholder="Enter regime script here..." id="txt-reg-script">{{$consult->txt_regime_script}}</textarea>
 					</div>
 				</div>
 
 				<div class="row" style="padding-top: 10px">
-					<div class="col-sm-3" style="text-align: right">
-						Meds:
+					<div class="col-sm-2" style="text-align: right">
+						Request Meds:
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-8">
 						<div class="table-responsive">
 							<table class="table table-sm table-bordered table-condensed table-hover text-center table-responsive" >
 					            <tbody id="table-meds">
@@ -132,14 +132,14 @@
 				</div>
 
 				<div class="row" style="padding-top: 10px">
-					<div class="col-sm-3" style="text-align: right">
-						Lab Tests:
+					<div class="col-sm-2" style="text-align: right">
+						Request Lab Tests:
 					</div>
-					<div class="col-sm-6"> 
+					<div class="col-sm-8"> 
 						<div class="table-responsive">
 							<table class="table table-sm table-condensed table-bordered table-hover text-center table-responsive" >
 					            <tbody id="table-tests" >
-					            	@include("consultation.new-consultation.tableTests")
+					            	@include("consultation.new-consultation.tableLabs")
 					            </tbody>
 				          	</table>
 			          	</div>
@@ -148,7 +148,7 @@
 
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3">
-							<button class="btn btn-primary"><i class="fa fa-check"></i>Save Consult</button>
+							<button class="btn btn-primary"><i class="fa fa-check"></i> Save Consult</button>
 					</div>
 				</div>
 
@@ -158,6 +158,8 @@
 </div>
 
 @include("consultation.new-consultation.modalMedsQty")
+@include("consultation.new-consultation.modalLabRequest")
+@include("consultation.new-consultation.modalLabResults")
 @include("consultation.new-consultation.modalPatientHistory")
 
-<script src="/js/consultation/consultation-newconsult.js?ver=2"></script>
+<script src="/js/consultation/consultation-newconsult.js?"></script>
