@@ -18,5 +18,5 @@ function showNewConsultionForm(event){
 	var data = {'patient_id' : patient_id, 'client_id' : client_id, "reg_id" : reg_id};
 
 	loadButton(button, "Consult");
-	getPostView('consultation/viewNewConsultation', $('#page-content'), data);
+	getPostView('consultation/getViewNewConsultation', $('#page-content'), data);
 }

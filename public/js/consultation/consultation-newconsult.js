@@ -1,13 +1,52 @@
+var labRequestsTimeout;
+
 $(document).ready(function(){
 	$(".btn-issue-med").on("click touch", showModalQty);
 	$(".btn-issue-med-qty").on("click touch", issueMed);
 	$(".btn-qty-reduce").on("click touch", minusMed);
 	$(".btn-qty-increase").on("click touch", plusMed);
-	$('.btn-request-lab').on('click touch', requestOrResult);
 	$(".btn-lab-cancel").on("click touch", hideModalLab);
 	$(".btn-lab-confirm").on("click touch", sendLabRequest);
+	$(".btn-save-consult").on("click touch", saveConsult);
+	$(".sidebar-nav-item").on("click touch", function(){
+		clearTimeout(labRequestsTimeout);
+	});
+	getLabRequestsTable();
 });
 
+function getLabRequestsTable(){
+	var consult_id = $("#consult-id").val();
+	var data = {'consult_id' : consult_id};
+
+	$.post('consultation/getLabRequestsTable', data, function(table){
+		$("#table-labs").html(table);
+		$('.btn-request-lab').on('click touch', requestOrResult);
+		labRequestsTimeout = setTimeout(getLabRequestsTable, 30000);
+	});
+}
+
+function saveConsult(event){
+	var txt_examination = $("#txt-exam").val();
+	var txt_diff_diag = $("#txt-diff-diag").val();
+	var txt_consult_diag = $("#txt-consult-diag").val();
+	var txt_notes = $("#txt-notes").val();
+	var txt_regime_script = $("#txt-reg-script").val();
+	var consult_id = $("#consult-id").val();
+	var data = {"consult_id" : consult_id,
+				"txt_examination" : txt_examination, "txt_diff_diag" : txt_diff_diag,
+				"txt_consult_diag" : txt_consult_diag, "txt_notes" : txt_notes,
+				"txt_regime_script" : txt_regime_script
+				};
+				
+	loadButton($(this));
+	$.post('consultation/saveConsult', data, function(){
+		getView('consultation/viewPatientList', $('#page-content'), function(){
+			alertMessage('success', 'Successfully saved consult!');
+		});
+		clearTimeout(labRequestsTimeout);
+	});
+
+}
 
 function requestOrResult(event){
 	if ($(this).hasClass('btn-primary'))
@@ -26,8 +65,8 @@ function sendLabRequest(event){
 	loadButton(btn);
 
 	$.post('consultation/sendLabRequest', data, function(data){
-		btn_table.attr('class', 'btn btn-success btn-request-lab');
-		btn_table.html('View Results');
+		btn_table.attr('class', 'btn btn-default disabled');
+		btn_table.html('Pending');
 		hideModalLab();
 		unloadButton(btn, 'Confirm');
 	});

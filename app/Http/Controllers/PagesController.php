@@ -29,6 +29,10 @@ class PagesController extends Controller
                 return redirect('reception');
             case 3:
             	return redirect('consultation');
+        	case 4:
+            	return redirect('pharmacy');
+        	case 5:
+            	return redirect('labs');
             default:
                 return view('index')
                 	->with('employee', $employee);
@@ -81,6 +85,30 @@ class PagesController extends Controller
 
 		if($access == 0)
 			return view('admin.mainAdmin')
+					->with('employee', $employee);
+
+		return redirect('index');
+	}
+
+	public function pharmacy(){
+		$access = Auth::user()->access_id;
+		$employee_id = Auth::user()->employee_id;
+		$employee = Employee::find($employee_id);
+
+		if($access == 4 || $access == 0)
+			return view('pharmacy.mainPharmacy')
+					->with('employee', $employee);
+
+		return redirect('index');
+	}
+
+	public function labs(){
+		$access = Auth::user()->access_id;
+		$employee_id = Auth::user()->employee_id;
+		$employee = Employee::find($employee_id);
+
+		if($access == 5 || $access == 0)
+			return view('labs.mainLabs')
 					->with('employee', $employee);
 
 		return redirect('index');

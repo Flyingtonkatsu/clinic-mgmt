@@ -15,15 +15,16 @@
 
         <button class="btn btn-primary btn-lg" onclick="location.href='consultation';"><i class="fa fa-stethoscope"> </i> Consultation </button>
 
-        <button class="btn btn-primary btn-lg" onclick="location.href='';"> <i class="fa fa-medkit "></i> Pharmacy </button>
+        <button class="btn btn-primary btn-lg" onclick="location.href='labs';"> <i class="fa fa-eyedropper "></i> Labs </button>
 
-        <button class="btn btn-primary btn-lg" onclick="location.href='';"> <i class="fa fa-eyedropper "></i> Labs </button>
+        <button class="btn btn-primary btn-lg" onclick="location.href='pharmacy';"> <i class="fa fa-medkit "></i> Pharmacy </button>
+
+        <button class="btn btn-primary btn-lg" onclick="location.href='';"> <i class="fa fa-archive"></i> Supplies </button>
 
         <button class="btn btn-primary btn-lg" onclick="location.href='';"> <i class="fa fa-bed"></i> Confinement </button>
 
-        <button class="btn btn-primary btn-lg" onclick="location.href='';"> <i class="fa fa-calculator"></i> Accounting </button>
 
-        <button class="btn btn-primary btn-lg" onclick="location.href='admin';"> <i class="fa fa-archive"></i> Admin </button>
+        <button class="btn btn-primary btn-lg" onclick="location.href='admin';"> <i class="fa fa-wrench"></i> Admin </button>
       </div>
     </div>
   </div>

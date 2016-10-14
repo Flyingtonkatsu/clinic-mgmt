@@ -6,7 +6,13 @@
 		<p hidden>{{$lab_results_found = false}}</p>
 		@foreach($lab_requests as $request)
 			@if($request->lab_id == $lab->id)
-				<td class="text-center col-sm-4"><button class="btn btn-success btn-request-lab" data-lab-id='{{$lab->id}}' data-lab-name="{{$lab->name}}" id="btn-request-lab-{{$lab->id}}">View Results</button></td>
+				<td class="text-center col-sm-4">
+				@if($request->completed)
+					<button class="btn btn-success btn-request-lab" data-lab-id='{{$lab->id}}' data-lab-name="{{$lab->name}}" id="btn-request-lab-{{$lab->id}}">View Results</button>
+				@else
+					<button class="btn btn-default btn-request-lab" data-lab-id='{{$lab->id}}' data-lab-name="{{$lab->name}}" id="btn-request-lab-{{$lab->id}}" disabled>Pending</button>
+				@endif
+				</td>
 				<p hidden>{{$lab_results_found = true}}</p>
 			@endif
 		@endforeach

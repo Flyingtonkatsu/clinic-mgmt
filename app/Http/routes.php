@@ -12,6 +12,8 @@ Route::get('reception', 'PagesController@reception');
 Route::get('consultation', 'PagesController@consultation');
 Route::get('registration', 'PagesController@registration');
 Route::get('admin', 'PagesController@admin');
+Route::get('pharmacy', 'PagesController@pharmacy');
+Route::get('labs', 'PagesController@labs');
 
 // Routes for Registration Controller
 // GET Requests
@@ -42,10 +44,21 @@ Route::post('reception/verifyexistingpatient', 'ReceptionController@verifyPatien
 //Routes for Consultation
 Route::get('consultation/viewPatientList', 'ConsultationController@getViewPatientList');
 Route::get('consultation/getPatientList', 'ConsultationController@getPatientList');
-Route::post('consultation/viewNewConsultation', 'ConsultationController@getViewNewConsultation');
+Route::post('consultation/getViewNewConsultation', 'ConsultationController@getViewNewConsultation');
 Route::post('consultation/issueMed', 'ConsultationController@issueMed');
 Route::post('consultation/sendLabRequest', 'ConsultationController@sendLabRequest');
 Route::post('consultation/getLabRequest', 'ConsultationController@getLabRequest');
+Route::post('consultation/saveConsult', 'ConsultationController@saveConsult');
+Route::post('consultation/getLabRequestsTable', 'ConsultationController@getLabRequestsTable');
+
+//Routes for Pharmacy
+Route::get('pharmacy/getViewMedRequests', 'PharmacyController@getViewMedRequests');
+Route::get('pharmacy/getTableMedRequests', 'PharmacyController@getTableMedRequests');
+
+//Routes for Labs
+Route::get('labs/getViewLabRequests', 'LabsController@getViewLabRequests');
+Route::get('labs/getTableLabRequests', 'LabsController@getTableLabRequests');
+Route::post('labs/updateLabResults', 'LabsController@updateLabResults');
 
 // Routes for Admin Controller
 Route::get('admin/viewEmployeeReg', 'AdminController@getViewEmployeeRegistration');

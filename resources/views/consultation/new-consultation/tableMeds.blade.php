@@ -8,19 +8,19 @@
 		@foreach($med_requests as $request)
 			@if($request->med_id == $med->id)
 				<td class="text-center col-sm-4">
-					<button class="btn btn-success btn-issue-med" id="btn-issue-med-{{$med->id}}" data-med-id="{{$med->id}}" disabled>Issued {{$request->qty}}</button>
+					<button class="btn btn-success btn-issue-med" id="btn-issue-med-{{$med->id}}" data-med-id="{{$med->id}}" disabled>Prescribed {{$request->qty}}</button>
 				</td>
 				<p hidden>{{$med_request_found = true}}</p>
 			@endif
 		@endforeach
 		@if(!$med_request_found)
 			<td class="text-center col-sm-4">
-				<button class="btn btn-primary btn-issue-med" id="btn-issue-med-{{$med->id}}" data-med-id="{{$med->id}}">Request</button>
+				<button class="btn btn-primary btn-issue-med" id="btn-issue-med-{{$med->id}}" data-med-id="{{$med->id}}">Prescribe</button>
 			</td>
 		@endif
 	@else
 	    <td class="text-center col-sm-4">
-	    	<button class="btn btn-primary btn-issue-med" id="btn-issue-med-{{$med->id}}" data-med-id="{{$med->id}}">Request</button>
+	    	<button class="btn btn-primary btn-issue-med" id="btn-issue-med-{{$med->id}}" data-med-id="{{$med->id}}">Prescribe</button>
 	    </td>
 	@endif
 </tr>

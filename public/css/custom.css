@@ -45,6 +45,10 @@ body {
     background:  rgba(255,255,255,0.2);
 }
 
+.sidebar-nav-active {
+    background:  rgba(255,255,255,0.2);
+}
+
 .navbar {
     background-image: linear-gradient(to bottom,#800080 0,#4d004d 100%);
 }

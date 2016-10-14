@@ -33,4 +33,4 @@
 	</div>
 </div>
 
-<script src="/js/consultation/consultation-patientlist.js?var=2"></script>
+<script src="/js/consultation/consultation-patientlist.js?"></script>

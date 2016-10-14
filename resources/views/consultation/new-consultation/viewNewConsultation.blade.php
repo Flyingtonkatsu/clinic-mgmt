@@ -138,8 +138,7 @@
 					<div class="col-sm-8"> 
 						<div class="table-responsive">
 							<table class="table table-sm table-condensed table-bordered table-hover text-center table-responsive" >
-					            <tbody id="table-tests" >
-					            	@include("consultation.new-consultation.tableLabs")
+					            <tbody id="table-labs" >
 					            </tbody>
 				          	</table>
 			          	</div>
@@ -148,7 +147,7 @@
 
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3">
-							<button class="btn btn-primary"><i class="fa fa-check"></i> Save Consult</button>
+							<button class="btn btn-primary btn-save-consult "><i class="fa fa-check"></i> Save Consult</button>
 					</div>
 				</div>
 
@@ -162,4 +161,4 @@
 @include("consultation.new-consultation.modalLabResults")
 @include("consultation.new-consultation.modalPatientHistory")
 
-<script src="/js/consultation/consultation-newconsult.js?"></script>
+<script src="/js/consultation/consultation-newconsult.js?v"></script>

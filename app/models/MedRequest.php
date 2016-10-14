@@ -8,6 +8,6 @@ class MedRequest extends Model {
 	protected $table = 'med_requests';
 
 	protected $fillable = array(
-		'consult_id', 'med_id', 'qty'
+		'consult_id', 'med_id', 'qty', 'vet_id', 'pharmacist_id'
 		);
 }

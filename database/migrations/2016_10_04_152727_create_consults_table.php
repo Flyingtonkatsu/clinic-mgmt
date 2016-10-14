@@ -13,6 +13,7 @@ class CreateConsultsTable extends Migration
             $table->integer('client_id');
             $table->integer('patient_id');
             $table->integer('reg_id');
+            $table->integer('vet_id');
             
             $table->char('weight');
             $table->char('purpose');

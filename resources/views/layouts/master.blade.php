@@ -27,8 +27,9 @@
         <div class="container">
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
+                    
                     <li class="sidebar-brand">
-                        <a href="/"> Vets in Practice </a>
+                        <a href="/">  Vets in Practice </a>
                     </li>
 
                     @yield('taskbar')

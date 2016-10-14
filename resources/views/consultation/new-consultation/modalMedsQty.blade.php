@@ -21,7 +21,7 @@
 
 				<div class="row">
 					<div class="col-sm-12" style="text-align: center">
-						<button class="btn btn-primary btn-issue-med-qty">Issue</button>
+						<button class="btn btn-primary btn-issue-med-qty">Prescribe</button>
 					</div>
 				</div>
 
