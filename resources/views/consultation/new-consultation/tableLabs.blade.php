@@ -7,10 +7,12 @@
 		@foreach($lab_requests as $request)
 			@if($request->lab_id == $lab->id)
 				<td class="text-center col-sm-4">
-				@if($request->completed)
+				@if($request->status == "Completed")
 					<button class="btn btn-success btn-request-lab" data-lab-id='{{$lab->id}}' data-lab-name="{{$lab->name}}" id="btn-request-lab-{{$lab->id}}">View Results</button>
-				@else
-					<button class="btn btn-default btn-request-lab" data-lab-id='{{$lab->id}}' data-lab-name="{{$lab->name}}" id="btn-request-lab-{{$lab->id}}" disabled>Pending</button>
+				@elseif($request->status == "Requested")
+					<button class="btn btn-primary btn-request-lab" data-lab-id='{{$lab->id}}' data-lab-name="{{$lab->name}}" id="btn-request-lab-{{$lab->id}}" disabled>Request Sent</button>
+				@elseif($request->status == "Declined")
+					<button class="btn btn-default" disabled>Declined</button>
 				@endif
 				</td>
 				<p hidden>{{$lab_results_found = true}}</p>

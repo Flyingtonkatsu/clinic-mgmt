@@ -15,6 +15,7 @@ class CreateMedRequestsTable extends Migration
             $table->integer('vet_id');
             $table->integer('pharmacist_id');
             $table->integer('qty');
+            $table->char('status');
         });
     }
 

@@ -24,12 +24,12 @@
 @else
 	
 <tr>
-	<td colspan="5"> No existing client found. </td>
+	<td colspan="5"> No existing client record found. </td>
 </tr>
 @endif
 
 <tr>
 	<td colspan="5">
-		<button class="btn btn-success btn-new-client" data-reg-id="{{$reg_id}}"> <i class="fa fa-plus"></i> New Client </button>
+		<button class="btn btn-success btn-new-client" data-reg-id="{{$reg_id}}"> <i class="fa fa-plus"></i> Verify New Client </button>
 	</td>
 </tr>

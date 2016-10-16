@@ -6,10 +6,10 @@
 
 @section('taskbar')
 	<li class="sidebar-nav-item"> 
-	   <a id="nav-queue-reg" href="#"><span class="glyphicon glyphicon-list"></span> Queue Registration</a>
+	   <a id="nav-queue-reg" href="#"><span class="glyphicon glyphicon-list"></span> Registration Queue</a>
 	</li>
 	<li class="sidebar-nav-item"> 
-	    <a id="nav-new-client" href="#"><span class="glyphicon glyphicon-user"></span> New Client</a>
+	    <a id="nav-new-client" href="#"><span class="glyphicon glyphicon-user"></span> Client Verification</a>
 	</li>
 @endsection
 

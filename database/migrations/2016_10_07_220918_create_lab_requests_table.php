@@ -13,7 +13,7 @@ class CreateLabRequestsTable extends Migration
             $table->integer('lab_id');
             $table->integer('consult_id');
             $table->char('results');
-            $table->boolean('completed');
+            $table->char('status');
         });
     }
 

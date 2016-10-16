@@ -15,7 +15,7 @@ class RegistrationController extends Controller
     }
     
     public function registerNewClient(Request $request) {
-        $reg = Registration::where('edited', 1)->first();
+        $reg = Registration::where(['edited' => 1, 'client_verified' => 0])->first();
         $reg->update(['edited' => 0]);
 
         $client = Client::create([
@@ -33,7 +33,7 @@ class RegistrationController extends Controller
     }
 
     public function getEditedReg(Request $request) {
-        $reg = Registration::where('edited', 1)->first();
+        $reg = Registration::where(['edited' => 1, 'client_verified' => 0])->first();
         
         return response()->json($reg);
     }

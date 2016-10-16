@@ -18,17 +18,13 @@
 	              	<th class="text-center col-sm-2"> Lab Test </th>
 	                <th class="text-center col-sm-3"> Requesting Vet </th>
 	                <th class="text-center col-sm-2"> Patient </th>
-	                <th class="text-center col-sm-1"> Results </th>
+	                <th class="text-center col-sm-2"> Status</th>
+	                <th class="text-center col-sm-2"> Actions </th>
 	              </tr>
 	            </thead>
 
 	            <tbody id="table-lab-requests">
-	            	<tr>
-		                <td class="text-center col-sm-2"> Blood </td>
-		                <td class="text-center col-sm-3"> de Guia, Michael </td>
-		                <td class="text-center col-sm-2"> Luna </td>
-		                <td class="text-center col-sm-1"> <button class="btn btn-primary"> Enter Results</button> </td>
-	            	</tr>
+	            	
 	            </tbody>
           	</table>
           </div>
@@ -39,5 +35,6 @@
 
 <!-- Modals -->
 @include('labs.lab-requests.modalLabInputResults')
+@include('labs.lab-requests.modalLabConfirmDecline')
 
-<script src="/js/labs/labs-request-list.js"></script>
+<script src="/js/labs/labs-request-list.js?"></script>

@@ -18,7 +18,7 @@ class LabsController extends Controller
     }
 
     public function getTableLabRequests(){
-    	$lab_requests = LabRequest::where('completed', 0)->get();
+    	$lab_requests = LabRequest::where('status', 'Requested')->get();
         $vets = Employee::all();
         $labs = Lab::all();
         $consults = Consult::all();
@@ -41,8 +41,15 @@ class LabsController extends Controller
         $results = $request->input('results');
         $lab_request = LabRequest::find($request_id);
 
-        $lab_request->update(['results' => $results, 'completed' => 1]);
+        $lab_request->update(['results' => $results, 'status' => 'Completed']);
         return response()->json(['status' => 'ok']);
     }
 
+    public function declineLabRequest(Request $request){
+        $request_id = $request->input('request_id');
+
+        $lab_request = LabRequest::find($request_id);
+        $lab_request->update(['results' => 'Lab test declined.', 'status' => 'Declined']);
+        return response()->json(['status' => 'ok']);
+    }
 }

@@ -1,4 +1,4 @@
-var labRequestsTimeout;
+var labRequestsTimeout = null;
 
 $(document).ready(function(){
 	$(".btn-issue-med").on("click touch", showModalQty);
@@ -21,7 +21,9 @@ function getLabRequestsTable(){
 	$.post('consultation/getLabRequestsTable', data, function(table){
 		$("#table-labs").html(table);
 		$('.btn-request-lab').on('click touch', requestOrResult);
-		labRequestsTimeout = setTimeout(getLabRequestsTable, 30000);
+		if(labRequestsTimeout != null)
+			clearTimeout(labRequestsTimeout);
+		labRequestsTimeout = setTimeout(getLabRequestsTable, 10000);
 	});
 }
 
@@ -65,8 +67,7 @@ function sendLabRequest(event){
 	loadButton(btn);
 
 	$.post('consultation/sendLabRequest', data, function(data){
-		btn_table.attr('class', 'btn btn-default disabled');
-		btn_table.html('Pending');
+		getLabRequestsTable();
 		hideModalLab();
 		unloadButton(btn, 'Confirm');
 	});

@@ -59,6 +59,7 @@ Route::get('pharmacy/getTableMedRequests', 'PharmacyController@getTableMedReques
 Route::get('labs/getViewLabRequests', 'LabsController@getViewLabRequests');
 Route::get('labs/getTableLabRequests', 'LabsController@getTableLabRequests');
 Route::post('labs/updateLabResults', 'LabsController@updateLabResults');
+Route::post('labs/declineLabRequest', 'LabsController@declineLabRequest');
 
 // Routes for Admin Controller
 Route::get('admin/viewEmployeeReg', 'AdminController@getViewEmployeeRegistration');

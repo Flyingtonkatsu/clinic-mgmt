@@ -123,7 +123,7 @@ class ConsultationController extends Controller
             'lab_id' => $lab_id,
             'consult_id' => $consult_id,
             'results' => 'PENDING TEST',
-            'completed' => 0
+            'status' => 'Requested'
         ]);
     }
 
@@ -143,7 +143,8 @@ class ConsultationController extends Controller
         MedRequest::create([
             'med_id' => $med_id,
             'consult_id' => $consult_id,
-            'qty' => $qty    
+            'qty' => $qty,
+            'status' => 'Requested'
         ]);
 
         $med = Med::find($med_id);
