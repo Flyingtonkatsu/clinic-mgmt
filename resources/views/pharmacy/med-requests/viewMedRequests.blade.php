@@ -24,13 +24,7 @@
 	            </thead>
 
 	            <tbody id="table-med-requests">
-	            	<tr>
-		                <th class="text-center col-sm-3"> Med26812 </th>
-		                <th class="text-center col-sm-2"> 5 </th>
-		                <th class="text-center col-sm-2"> 100 </th>
-		        		<th class="text-center col-sm-3"> de Guia, Michael </th>
-		                <th class="text-center col-sm-1"> <button class="btn btn-success"> Issue</button></th>
-	            	</tr>
+	            	
 	            </tbody>
           	</table>
           </div>
@@ -40,3 +34,4 @@
 </div>
 
 <!-- Modals -->
+<script src="js/pharmacy/pharmacy-request-list.js?v"></script>

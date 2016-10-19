@@ -1,7 +1,7 @@
 @foreach($meds as $med)
 
 <tr>
-    <td class="text-center col-xs-8">{{$med->name}}</td>
+    <td class="text-center col-xs-8">{{$med->description}}</td>
 
     @if($med_requests != null)
 		<p hidden>{{$med_request_found = false}}</p>

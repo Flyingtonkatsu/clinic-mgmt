@@ -9,7 +9,8 @@ use App\Models\Registration;
 use App\Models\Client;
 use App\Models\Patient;
 use App\Models\User;
-use App\Models\Med;
+use App\Models\SupplyCategory;
+use App\Models\Supply;
 use App\Models\Lab;
 use App\Models\LabRequest;
 use App\Models\MedRequest;
@@ -64,7 +65,7 @@ class ConsultationController extends Controller
         $reg = Registration::find($reg_id);
         $vet_id = $reg->vet_id;
         $vet = Employee::find($vet_id);
-        $meds = Med::all();
+        $meds = Supply::all();  // ----- Filter by joining Supply and Supply Category
 
         $reg->update(["status" => $reg->purpose]);
         $consult = Consult::where('reg_id', $reg_id)->first();
@@ -139,16 +140,15 @@ class ConsultationController extends Controller
         $med_id = $request->input('med_id');
         $consult_id = $request->input('consult_id');
         $qty = $request->input('qty');
+        $consult = Consult::find($consult_id);
+        $vet_id = $consult->vet_id;
 
         MedRequest::create([
             'med_id' => $med_id,
             'consult_id' => $consult_id,
             'qty' => $qty,
-            'status' => 'Requested'
+            'status' => 'Requested',
+            'vet_id' => $vet_id
         ]);
-
-        $med = Med::find($med_id);
-        $qty_onhand = $med->qty_onhand;
-        $med->update(['qty_onhand' => $qty_onhand - $qty]);
     }
 }

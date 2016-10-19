@@ -17,6 +17,10 @@
 	    	<button class="btn btn-primary btn-results" data-req-id="{{$request->id}}" data-test-name="{{$labs->find($lab_id)->name}}" data-patient-name="{{$patient->name}}"> Enter Results</button>
 	    	<button class="btn btn-danger btn-decline-request" data-req-id="{{$request->id}}" data-test-name="{{$labs->find($lab_id)->name}}" data-patient-name="{{$patient->name}}"> Decline </button> 
 	    </td>
+	    @else
+	    <td>
+	    	
+	    </td>
 	    @endif
 	</tr>
 	{{$request_count++}}
