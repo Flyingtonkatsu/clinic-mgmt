@@ -15,27 +15,31 @@ class RegistrationController extends Controller
     }
     
     public function registerNewClient(Request $request) {
-        $reg = Registration::where(['edited' => 1, 'client_verified' => 0])->first();
+        $reg = Registration::find($request->input("reg_id"));
         $reg->update(['edited' => 0]);
 
         $client = Client::create([
             'firstname' => $request->input('firstname'),
             'lastname' => $request->input('lastname'),
             'email' => $request->input('email'),
+            'birthday' => $request->input('birthday'),
             'landline' => $request->input('landline'),
             'mobile' => $request->input('mobile'),
             'address' => $request->input('address'),
-            'birthday' => $request->input('birthday'),
-            'city' => $request->input('city')
+            'city' => $request->input('city'),
+            'landline2' => $request->input('landline2'),
+            'mobile2' => $request->input('mobile2'),
+            'address2' => $request->input('address2'),
+            'city2' => $request->input('city2')
             ]);
 
-        return redirect()->action('PagesController@registration');
+        //return redirect()->action('PagesController@registration');
     }
 
     public function getEditedReg(Request $request) {
-        $reg = Registration::where(['edited' => 1, 'client_verified' => 0])->first();
+        $reg = Registration::where(['edited' => 1, 'client_verified' => 0])->get();
         
-        return response()->json($reg);
+        return view('registration.newclient.selectClientNames')->with('clients', $reg);
     }
 
     public function registerInQueue(Request $request) {

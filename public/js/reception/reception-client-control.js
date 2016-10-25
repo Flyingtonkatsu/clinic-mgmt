@@ -44,11 +44,17 @@ function verifyClient(event){
 	var mobile = $('#input-mobile').val();
 	var landline = $('#input-landline').val();
 	var city = $('#select-city').val();
+	var address2 = $('#input-address2').val();
+	var mobile2 = $('#input-mobile2').val();
+	var landline2 = $('#input-landline2').val();
+	var city2 = $('#select-city2').val();
 	var data = {
 		'client_id' : client_id, 'reg_id' : reg_id,
 		'email' : email, 'address' : address,
 		'mobile' : mobile, 'landline' : landline,
-		'city' : city
+		'city' : city, 'address2' : address2,
+		'mobile2' : mobile2, 'landline2' : landline2,
+		'city2' : city2
 		};
 
 	loadButton($('#btn-update-client'), ' Confirm' );

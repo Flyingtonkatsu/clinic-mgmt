@@ -8,14 +8,15 @@
 		<form class="form-horizontal" id="form-new-client">
 	    	<input type="hidden" id="reg_id" name="reg_id">
 	    	<div class="form-group" id="form-group-names">
-	    		<label class="control-label col-sm-2">First Name:</label>
+	    		<label class="control-label col-sm-2">Name:</label>
 	    		<div class="col-sm-4">
-	    			<input class="form-control input-name" placeholder="Enter first name" id="input-firstname">
+	    			<select class="form-control select-names">
+
+	    			</select>
 	    		</div>
-	    		<label class="control-label col-sm-2" for="last-name">Last Name:</label>
-	    		<div class="col-sm-4">
-	    			<input class="form-control input-name" placeholder="Enter last name" id="input-lastname">
-	    		</div>
+
+	    		<input type='hidden' id='input-lastname'>
+	    		<input type='hidden' id='input-firstname'>
 	    	</div>
 
 	    	<div class="form-group">
@@ -30,24 +31,51 @@
 	    	</div>
 
 	    	<div class="form-group">
-	    		<label class="control-label col-sm-2">Mobile Number:</label>
+	    		<label class="control-label col-sm-2">Mobile Number 1:</label>
 	    		<div class="col-sm-4">
 	    			<input class="form-control" placeholder="Enter mobile number" id="input-mobile">
 	    		</div>
-	    		<label class="control-label col-sm-2" for="contact-number">Landline:</label>
+	    		<label class="control-label col-sm-2">Mobile Number 2:</label>
+	    		<div class="col-sm-4">
+	    			<input class="form-control" placeholder="Enter mobile number" id="input-mobile2">
+	    		</div>
+	    	</div>
+
+    		<div class="form-group">
+	    		<label class="control-label col-sm-2" for="contact-number">Landline 1:</label>
 	    		<div class="col-sm-4">
 	    			<input class="form-control" placeholder="Enter landline number" id="input-landline">
+	    		</div>
+	    		<label class="control-label col-sm-2" for="contact-number">Landline 2:</label>
+	    		<div class="col-sm-4">
+	    			<input class="form-control" placeholder="Enter landline number" id="input-landline2">
 	    		</div>
 	    	</div>
 
 	    	<div class="form-group">
-	    		<label class="control-label col-sm-2" for="address"> Street Address:</label>
+	    		<label class="control-label col-sm-2"> Home Address:</label>
 	    		<div class="col-sm-4">
 	    			<textarea class="form-control" rows="2" placeholder="Enter Address" id="input-address" style="resize: none"></textarea>
 	    		</div>
-	    		<label class="control-label col-sm-2" for="address"> City:</label>
+	    		<label class="control-label col-sm-2"> Home City:</label>
 	    		<div class="col-sm-4">
 	        		<select class="form-control" id="select-city">
+	        			<option value="" disabled selected>Select city</option>
+	    				@foreach($cities as $city)
+	    					<option value="{{$city->id}}">{{$city->name}}</option>
+	    				@endforeach
+	        		</select>
+	    		</div>
+	    	</div>
+
+	    	<div class="form-group">
+	    		<label class="control-label col-sm-2"> Work Address:</label>
+	    		<div class="col-sm-4">
+	    			<textarea class="form-control" rows="2" placeholder="Enter Address" id="input-address2" style="resize: none"></textarea>
+	    		</div>
+	    		<label class="control-label col-sm-2"> Work City:</label>
+	    		<div class="col-sm-4">
+	        		<select class="form-control" id="select-city2">
 	        			<option value="" disabled selected>Select city</option>
 	    				@foreach($cities as $city)
 	    					<option value="{{$city->id}}">{{$city->name}}</option>

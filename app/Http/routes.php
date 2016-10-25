@@ -19,7 +19,7 @@ Route::get('labs', 'PagesController@labs');
 // GET Requests
 Route::get('registration/viewNewClient', 'RegistrationController@getViewNewClient');
 Route::get('registration/viewQueue', 'RegistrationController@getViewQueue');
-Route::get('registration/editedreg', 'RegistrationController@getEditedReg');
+Route::get('registration/getEditedReg', 'RegistrationController@getEditedReg');
 // POST Requests
 Route::post('registration/newclient', 'RegistrationController@registerNewClient');
 Route::post('registration/registerinqueue', 'RegistrationController@registerInQueue');
@@ -41,11 +41,15 @@ Route::post("reception/getbreeds", 'ReceptionController@getBreeds');
 Route::post("reception/addnewclient", 'ReceptionController@newPatient');
 Route::post('reception/verifyexistingpatient', 'ReceptionController@verifyPatient');
 
+	//Routes for Billing
+	Route::get('reception/getViewBilling', 'BillingController@getViewBilling');
+	Route::get('reception/getTableBillingClients', 'BillingController@getTableBillingClients');
+
 //Routes for Consultation
 Route::get('consultation/viewPatientList', 'ConsultationController@getViewPatientList');
 Route::get('consultation/getPatientList', 'ConsultationController@getPatientList');
 Route::post('consultation/getViewNewConsultation', 'ConsultationController@getViewNewConsultation');
-Route::post('consultation/issueMed', 'ConsultationController@issueMed');
+Route::post('consultation/issueMed', 'ConsultationController@prescribeMed');
 Route::post('consultation/sendLabRequest', 'ConsultationController@sendLabRequest');
 Route::post('consultation/getLabRequest', 'ConsultationController@getLabRequest');
 Route::post('consultation/saveConsult', 'ConsultationController@saveConsult');
@@ -54,6 +58,7 @@ Route::post('consultation/getLabRequestsTable', 'ConsultationController@getLabRe
 //Routes for Pharmacy
 Route::get('pharmacy/getViewMedRequests', 'PharmacyController@getViewMedRequests');
 Route::get('pharmacy/getTableMedRequests', 'PharmacyController@getTableMedRequests');
+Route::post('pharmacy/prepareMed', 'PharmacyController@prepareMed');
 
 //Routes for Labs
 Route::get('labs/getViewLabRequests', 'LabsController@getViewLabRequests');

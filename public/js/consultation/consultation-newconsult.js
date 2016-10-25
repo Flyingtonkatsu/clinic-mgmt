@@ -134,13 +134,18 @@ function issueMed(event){
 	}
 
 	loadButton(btn_submit);
+	getPostView('consultation/issueMed', $('#table-meds'), data, function(){
+		$("#modal-meds").modal("hide");
+		$(".btn-issue-med").on("click touch", showModalQty);
+	});
 
-	$.post('consultation/issueMed', data, function(data){
-		btn_table.html('Issued ' + qty);
+	/*
+	$.post(, function(data){
+		btn_table.html('Prescribed ' + qty);
 		btn_table.attr('class', 'btn btn-success');
 		btn_table.attr('disabled', true);
 
 		unloadButton(btn_submit, 'Request');
 		$("#modal-meds").modal("hide");
-	});
+	});*/
 }

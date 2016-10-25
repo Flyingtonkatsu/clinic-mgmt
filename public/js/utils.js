@@ -29,7 +29,10 @@ function unloadButton(button, label){
 
 function getView(url, container, callback){
 	container.html('<i class="fa fa-spinner fa-pulse fa-3x"></i>');
+	getViewNoLoad(url, container, callback);
+}
 
+function getViewNoLoad(url, container, callback){
 	$.get(url, 
 		function(view){
 			container.html(view);

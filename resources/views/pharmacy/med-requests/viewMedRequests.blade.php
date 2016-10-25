@@ -18,8 +18,10 @@
 	                <th class="text-center col-sm-3"> Med </th>
 	                <th class="text-center col-sm-1"> Requested Quantity </th>
 	                <th class="text-center col-sm-1"> Quantity On-hand </th>
+	                <th class="text-center col-sm-1"> Safe Quantity </th>
 	                <th class="text-center col-sm-3"> Vet </th>
-	                <th class="text-center col-sm-1"> </th>
+	                <th class="text-center col-sm-2"> Status </th>
+	                <th class="text-center col-sm-1"> Actions </th>
 	              </tr>
 	            </thead>
 

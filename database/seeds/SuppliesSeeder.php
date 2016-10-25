@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Supply;
-use App\Models\SupplyTransaction;
+use App\Models\Pharmacy;
 use App\Models\SupplyCategory;
 
 class SuppliesSeeder extends Seeder
@@ -45,5 +45,23 @@ class SuppliesSeeder extends Seeder
         	'category_id' => 1
     	]);
 	// -----------
+
+    // -----------
+    // Supply Inventory:
+        Pharmacy::create([
+            'med_id' => 1,
+            'qty_onhand' => 100,
+            'qty_safe' => 10,
+            'qty_debit' => 0, 
+            'qty_credit' => 0
+        ]);
+
+        Pharmacy::create([
+            'med_id' => 2,
+            'qty_onhand' => 100,
+            'qty_safe' => 10,
+            'qty_debit' => 0, 
+            'qty_credit' => 0
+        ]);
     }
 }

@@ -9,7 +9,7 @@
 	   <a id="nav-med-requests" href="#"><i class="fa fa-list-ul"></i> Med Requests</a>
 	</li>
 	<li class="sidebar-nav-item"> 
-	   <a id="nav-inventory-requests" href="#"><i class="fa fa-list-ul"></i> Inventory Request</a>
+	   <a id="nav-inventory-status" href="#"><i class="fa fa-list-ul"></i> Inventory Status</a>
 	</li>
 @endsection
 

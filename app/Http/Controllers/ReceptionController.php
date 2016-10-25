@@ -58,11 +58,18 @@ class ReceptionController extends Controller
         $mobile = $request->input('mobile');
         $address = $request->input('address');
         $city = $request->input('city');
+        $landline2 =  $request->input('landline2');
+        $mobile2 = $request->input('mobile2');
+        $address2 = $request->input('address2');
+        $city2 = $request->input('city2');
 
         $reg->update(['client_verified' => '1', 'client_id' => $client_id]);
         $client->update([
-            'landline' => $landline, 'email' => $email, 'mobile' => $mobile,
-            'address' => $address, 'city' => $city
+            'email' => $email, 'landline' => $landline, 'mobile' => $mobile,
+            'address' => $address, 'city' => $city,
+            'landline2' => $landline2, 'mobile2' => $mobile2,
+            'address2' => $address2, 'city2' => $city2
+
             ]);
 
         return response()->json($reg);

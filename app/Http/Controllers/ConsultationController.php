@@ -19,7 +19,8 @@ use App\Models\Consult;
 
 class ConsultationController extends Controller
 {
-    protected $status_after_consult = 'Completed';
+    private $status_after_consult = 'Billing';
+    private $status_before_consult = 'Registered';
 
     public function __construct(){
         $this->middleware('auth');
@@ -34,7 +35,7 @@ class ConsultationController extends Controller
         $employee_id = $user->employee_id;
         $registrations = Registration::where('vet_id', $employee_id)->where(DB::raw('DAY(created_at)'), '=', date('d'));
         $registrations = $registrations
-                        ->where('status', '!=', 'Registered')
+                        ->where('status', '!=', $this->status_before_consult)
                         ->where('status', '!=', $this->status_after_consult)
                         ->get();
         $clients = Client::all();
@@ -106,7 +107,7 @@ class ConsultationController extends Controller
         $consult = Consult::find($consult_id);
         $reg = Registration::find($consult->reg_id);
 
-        $reg->update(['status' => 'Completed']);
+        $reg->update(['status' => $this->status_after_consult]);
         $consult->update([
             'txt_examination' => $txt_examination,
             'txt_diff_diag' => $txt_diff_diag,
@@ -136,7 +137,7 @@ class ConsultationController extends Controller
         return response()->json(['request' => $lab_request]);
     }
 
-    public function issueMed(Request $request){
+    public function prescribeMed(Request $request){
         $med_id = $request->input('med_id');
         $consult_id = $request->input('consult_id');
         $qty = $request->input('qty');
@@ -150,5 +151,9 @@ class ConsultationController extends Controller
             'status' => 'Requested',
             'vet_id' => $vet_id
         ]);
+
+        return view('consultation.new-consultation.tableMeds')
+            ->with('med_requests', MedRequest::all())
+            ->with('meds', Supply::all());
     }
 }

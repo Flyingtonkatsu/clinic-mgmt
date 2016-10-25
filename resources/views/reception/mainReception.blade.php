@@ -8,8 +8,9 @@
 	<li class="sidebar-nav-item"> 
 	   <a id="nav-reg-table" href="#"><i class="fa fa-list-alt"></i> Patient List</a>
 	</li>
-	<li class="sidebar-nav-item">
-		<a id="nav-shop" href="#"> <i class="fa fa-shopping-cart"></i> Shop</a>
+
+	<li class="sidebar-nav-item"> 
+	   <a id="nav-billing" href="#"><i class="fa fa-shopping-cart"></i> Billing</a>
 	</li>
 @endsection
 
