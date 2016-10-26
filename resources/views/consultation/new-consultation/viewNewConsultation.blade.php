@@ -12,6 +12,9 @@
 			<div class="col-sm-6">
 				Client: <b> {{$client->lastname}}, {{$client->firstname}} </b>
 			</div>
+			<div class="col-sm-6 text-right">
+				Transaction No: <b> {{$consult->id}} </b>
+			</div>
 		</div>
 
 		<div class="row">

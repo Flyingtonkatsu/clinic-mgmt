@@ -14,8 +14,8 @@ class CreateSuppliesMstrTable extends Migration
             $table->integer('category_id');
             $table->char('uom', 10);
             $table->integer('uom_qty');
-            $table->integer('selling_price');
-            $table->integer('cost');
+            $table->float('selling_price', 6, 2);
+            $table->float('cost', 8, 2);
         });
     }
 

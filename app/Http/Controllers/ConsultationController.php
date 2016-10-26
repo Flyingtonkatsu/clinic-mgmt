@@ -11,6 +11,7 @@ use App\Models\Patient;
 use App\Models\User;
 use App\Models\SupplyCategory;
 use App\Models\Supply;
+use App\Models\Payment;
 use App\Models\Lab;
 use App\Models\LabRequest;
 use App\Models\MedRequest;
@@ -115,6 +116,40 @@ class ConsultationController extends Controller
             'txt_notes' => $txt_notes,
             'txt_regime_script' => $txt_regime_script
             ]);
+
+        $med_requests = MedRequest::where('consult_id', $consult_id)->get();
+        $lab_requests = LabRequest::where('consult_id', $consult_id)->get();
+
+        foreach($med_requests as $med_request){
+            $med = Supply::find($med_request->med_id);
+            $payment = Payment::create([
+                'consult_id' => $consult_id,
+                'client_id' => $consult->client_id,
+                'patient_id' => $consult->patient_id,
+                'item' => $med->description,
+                'price' => $med->selling_price,
+                'qty' => $med_request->qty,
+                'paid' => 0
+            ]);
+        }
+
+        foreach($lab_requests as $lab_request){
+            $lab = Lab::find($lab_request->lab_id);
+            if($lab_request->status=="Completed")
+                $qty = 1;
+            else
+                $qty = 0;
+
+            $payment = Payment::create([
+                'consult_id' => $consult_id,
+                'client_id' => $consult->client_id,
+                'patient_id' => $consult->patient_id,
+                'item' => $lab->name,
+                'price' => $lab->svc_price,
+                'qty' => $qty,
+                'paid' => 0
+            ]);
+        }
     }
 
     public function sendLabRequest(Request $request){

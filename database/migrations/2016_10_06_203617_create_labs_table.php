@@ -10,7 +10,7 @@ class CreateLabsTable extends Migration
         Schema::create('labs', function(Blueprint $table){
             $table->increments('id');
             $table->char('name');
-            $table->integer('svc_price');
+            $table->float('svc_price', 6, 2);
             $table->integer('kit_id');
         });
     }

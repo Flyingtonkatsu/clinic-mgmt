@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Payment;
 use App\Models\Consult;
+use App\Models\Patient;
 use App\Models\Client;
 use App\Models\Registration;
 
@@ -30,13 +31,19 @@ class BillingController extends Controller {
 				->with('consults', $consults);
 	}
 
-	public function getBillingForClient(Request $r) {
-		$reg_id = $r->input('reg_id');
+	public function getClientPayments(Request $r) {
+		$consult_id = $r->input('consult_id');
+		$consult = Consult::find($consult_id);
+		$reg_id = $consult->reg_id;
 		$reg = Registration::find($reg_id);
-		$consult = Consult::where('reg_id', $reg_id)->first();
-		$consult_id = $consult->id;
 		$payments = Payment::where('consult_id', $consult_id)->get();
+		$client = Client::find($consult->client_id);
+		$patient = Patient::find($consult->patient_id);
 
-		// return view with billing for selected reg
+		return view('reception.billing.tableClientCheckout')
+				->with('payments', $payments)
+				->with('client', $client)
+				->with('patient', $patient)
+				->with('consult_id', $consult_id);
 	}
 }

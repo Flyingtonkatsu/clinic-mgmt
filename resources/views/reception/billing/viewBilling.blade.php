@@ -31,4 +31,5 @@
 	</div>
 </div>
 
+@include('reception.billing.modalClientBilling')
 <script src="/js/reception/reception-billing.js"></script>
