@@ -69,6 +69,10 @@ Route::post('labs/updateLabResults', 'LabsController@updateLabResults');
 Route::post('labs/declineLabRequest', 'LabsController@declineLabRequest');
 
 // Routes for Admin Controller
-Route::get('admin/viewEmployeeReg', 'AdminController@getViewEmployeeRegistration');
-Route::get('admin/viewEmployeeList', 'AdminController@getViewEmployeeList');
+Route::get('admin/employees/viewEmployeeReg', 'AdminController@getViewEmployeeRegistration');
 Route::post('admin/registerNewEmployee', 'AdminController@registerNewEmployee');
+Route::get('admin/breedspecies/viewBreedsSpecies', 'AdminController@getViewBreedsSpecies');
+Route::get('admin/breedspecies/getTableSpecies', 'AdminController@getTableSpecies');
+Route::post('admin/breedspecies/getTableBreeds', 'AdminController@getTableBreeds');
+Route::post('admin/breedspecies/addSpecie', 'AdminController@addSpecie');
+Route::post('admin/breedspecies/addBreed', 'AdminController@addBreed');

@@ -7,15 +7,13 @@
 
 
 @section('taskbar')
-	<li class="sidebar-nav-head">
-		Employees
-	</li>
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Add Records <i class="fa fa-caret-down"></i> </a>
 
-	<li class="nav-item">
-		<a class="nav-link" href="#" id="nav-link-employee-reg"><i class="fa fa-user-plus"></i> Employee Registration </a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link" href="#" id="nav-link-employee-list"><i class="fa fa-users"></i> View Employees </a>
+		<ul class="dropdown-menu">
+		    <li><a class="nav-item" id="nav-employee-reg" href="#employees">Employees</a></li>
+		    <li><a class="nav-item" id="nav-breeds-species" href="#species">Breeds and Species</a></li>
+		  </ul>
 	</li>
 @endsection
 

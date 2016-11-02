@@ -1,10 +1,22 @@
+var alertMessageTimeout;
+
 function alertMessage(type, message){
 	$('#alert-message').html(
 		"<div class='alert alert-" + type + "' role='alert'>" +
 		"<strong>" + message + "</strong>" +
 		"</div>"
 	);
-	$('#alert-message').fadeIn('slow').delay(4000).fadeOut('slow');
+
+	$('#alert-message').hide();
+	if(alertMessageTimeout != null){
+		clearTimeout(alertMessageTimeout);
+	}
+
+	$('#alert-message').fadeIn('slow');
+	alertMessageTimeout = setTimeout(function(){
+		$('#alert-message').fadeOut('slow');
+		alertMessageTimeout = null;
+	}, 3000);
 }
 
 $('.pull-down').each(function() {

@@ -2,13 +2,13 @@
   width: 100%%;
 }
 .table-responsive tbody {
-  height: 120px;
+  height: 80px;
   overflow-y: auto;
   width: 100%;
 }
 
 .table-responsive tbody > tr > td {
-	height: 45px;
+	height: 40px;
 }
 
 .table-responsive thead, .table-responsive tbody, .table-responsive tr, .table-responsive td, .table-responsive th {

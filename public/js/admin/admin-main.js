@@ -1,12 +1,12 @@
 $(document).ready(function(){
-	$("#nav-link-employee-reg").on("click touch", getViewEmployeeReg);
-	$("#nav-link-employee-list").on("click touch", getViewEmployeeList);
+	$("#nav-employee-reg").on("click touch", getViewEmployeeReg);
+	$("#nav-breeds-species").on("click touch", getViewBreedsSpecies);
 });
 
 function getViewEmployeeReg(event){
-	return getMainView($(this), 'admin/viewEmployeeReg');
+	return getMainView($(this), 'admin/employees/viewEmployeeReg');
 }
 
-function getViewEmployeeList(event){
-	return getMainView($(this), 'admin/viewEmployeeList');
+function getViewBreedsSpecies(event){
+	return getMainView($(this), 'admin/breedspecies/viewBreedsSpecies');
 }
