@@ -18,6 +18,7 @@ class CreatePaymentsTable extends Migration
             $table->integer('price');
             $table->integer('qty');
             $table->boolean('paid');
+            $table->boolean('refused');
         });
     }
 

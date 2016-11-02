@@ -150,7 +150,7 @@
 
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3">
-							<button class="btn btn-primary btn-save-consult "><i class="fa fa-check"></i> Save Consult</button>
+							<button class="btn btn-primary btn-save-consult "><i class="fa fa-check"></i> Complete Consult</button>
 					</div>
 				</div>
 

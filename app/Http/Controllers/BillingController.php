@@ -13,6 +13,7 @@ use App\Models\Registration;
 
 class BillingController extends Controller {
 	private $billing_status = 'Billing';
+	private $paid_status = 'Completed';
 
 	public function __construct() {
 	    $this->middleware('auth');
@@ -44,6 +45,25 @@ class BillingController extends Controller {
 				->with('payments', $payments)
 				->with('client', $client)
 				->with('patient', $patient)
-				->with('consult_id', $consult_id);
+				->with('consult_id', $consult_id)
+				->with('reg_id', $reg_id);
+	}
+
+	public function checkoutClient(Request $request){
+		$data = $request->input();
+		$reg_id = 0;
+
+		foreach($data as $item){
+			if($item)
+			$id = $item["id"];
+			$paid = $item["paid"];
+			$reg_id = $item["reg_id"];
+			$payment = Payment::find($id);
+			$payment->update(["refused" => $paid, "paid" => 1]);
+			
+		}
+
+		$reg = Registration::find($reg_id);
+		$reg->update(['status' => $this->paid_status]);
 	}
 }

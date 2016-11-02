@@ -16,6 +16,7 @@ class CreatePharmacyTable extends Migration
             $table->integer('qty_debit');
             $table->integer('qty_credit');
             $table->integer('request_id');
+            $table->integer('department_code');
             $table->char('delivery_cert_num');
         });
     }

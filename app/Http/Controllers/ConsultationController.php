@@ -188,7 +188,7 @@ class ConsultationController extends Controller
         ]);
 
         return view('consultation.new-consultation.tableMeds')
-            ->with('med_requests', MedRequest::all())
+            ->with('med_requests', MedRequest::where('consult_id', $consult->id)->get())
             ->with('meds', Supply::all());
     }
 }

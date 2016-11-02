@@ -43,8 +43,9 @@ Route::post('reception/verifyexistingpatient', 'ReceptionController@verifyPatien
 
 	//Routes for Billing
 	Route::get('reception/getViewBilling', 'BillingController@getViewBilling');
-	Route::get('reception/getTableBillingClients', 'BillingController@getTableBillingClients');
-	Route::post('reception/getClientPayments', 'BillingController@getClientPayments');
+	Route::get('billing/getTableBillingClients', 'BillingController@getTableBillingClients');
+	Route::post('billing/getClientPayments', 'BillingController@getClientPayments');
+	Route::post('billing/checkoutClient', 'BillingController@checkoutClient');
 
 //Routes for Consultation
 Route::get('consultation/viewPatientList', 'ConsultationController@getViewPatientList');
